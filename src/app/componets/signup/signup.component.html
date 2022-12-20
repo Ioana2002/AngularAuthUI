@@ -44,6 +44,14 @@
                                 </div>
                             </div>
                             <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
+                            <div class="form-group pt-3">
+                                <div class="input-field" [class.error]="signUpForm.controls['confirmPassword'].dirty && signUpForm.hasError('required', 'confirmPassword')">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input formControlName="confirmPassword" [type]="type" placeholder="Confirm password">
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                                </div>
+                            </div>
+                            <small *ngIf="signUpForm.controls['confirmPassword'].dirty && signUpForm.hasError('required', 'confirmPassword')" class="text-danger">*Password is required</small>
                             <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="onSignup()">Sign Up</button>
                             <div class="text-center pt-4 text-muted">Already have account? <a id="forget" routerLink="/login">Login</a></div>
                         </form>
