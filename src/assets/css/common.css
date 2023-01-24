@@ -1,7 +1,8 @@
 .outer{
     height: 100vh;
-    background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat;
+    background: linear-gradient(to top, #9bcf79 50%, #38be3d 90%) no-repeat;
 }
+
 
 .panel-heading{
     text-align: center;
@@ -67,6 +68,17 @@ input[type='password']{
     outline: none;
     box-shadow: none; 
 
+}
+.fa-eye-slash{
+    color:#38be3d;
+}
+
+.fa-user{
+    color:#38be3d;
+}
+
+.fa-lock{
+    color:#38be3d;
 }
 
 img{
