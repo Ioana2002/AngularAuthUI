@@ -35,6 +35,13 @@ export class LoginComponent implements OnInit{
   onLogin(){
     if(this.loginForm.valid){
 
+      var body =
+      {
+        Username : this.loginForm.get("username")?.value,
+        Password : this.loginForm.get("password")?.value,
+        Email : "Test"
+      }
+
       console.log(this.loginForm.value)
       //Send the object to database
       this.auth.login(this.loginForm.value)

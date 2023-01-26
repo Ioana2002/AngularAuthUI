@@ -3,6 +3,8 @@ import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { MustMatch } from 'src/app/helpers/must-match.validator';
+
 
 @Component({
   selector: 'app-signup',
@@ -15,18 +17,15 @@ export class SignupComponent implements OnInit{
   isText: boolean = false;
   eyeIcon: string = "fa fa-eye-slash";
   signUpForm!: FormGroup;
-  constructor(private fb : FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, public service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
       userName: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required, Validators.minLength(4)],
       confirmPassword: ['', Validators.required]
     })
-    
   }
 
   hideShowPass() {
@@ -37,7 +36,7 @@ export class SignupComponent implements OnInit{
 
   onSignup(){
     if(this.signUpForm.valid){
-      this.auth.signUp(this.signUpForm.value)
+      this.service.signUp(this.signUpForm.value)
       .subscribe({
         next:(res=>{
           alert(res?.message)
