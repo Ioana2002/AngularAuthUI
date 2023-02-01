@@ -16,13 +16,16 @@ export class LoginComponent implements OnInit{
   isText: boolean = false;
   eyeIcon: string = "fa fa-eye-slash";
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private auth:AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
+
+     // if(localStorage.getItem('token') != null)
+    // this.router.navigateByUrl('/home')
     
   }
 
@@ -38,23 +41,24 @@ export class LoginComponent implements OnInit{
       var body =
       {
         Username : this.loginForm.get("username")?.value,
-        Password : this.loginForm.get("password")?.value,
-        Email : "Test"
+        Password : this.loginForm.get("password")?.value
+       // Email : "Test"
       }
 
       console.log(this.loginForm.value)
       //Send the object to database
-      this.auth.login(this.loginForm.value)
-      .subscribe({
-        next:(res)=>{
-          alert(res?.message);
-          this.loginForm.reset();
-          this.router.navigate(['dashboard'])
+      this.service.login(this.loginForm.value)
+      .subscribe(
+        (res:any)=>{
+         localStorage.setItem('token', res.token);
+         this.router.navigateByUrl('/home');
         },
-        error:(err)=>{
-          alert(err?.error.message)
-        }
-      })
+        err=>{
+          if(err.status == 400)
+          console.log(err);
+            }
+        
+      );
 
 
     }else{

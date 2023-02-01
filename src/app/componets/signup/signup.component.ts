@@ -22,8 +22,7 @@ export class SignupComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private service: AuthService,
-    private router: Router,
-    @Inject(String) private toastr: ToastrService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
@@ -42,39 +41,41 @@ export class SignupComponent implements OnInit{
 
   onSubmit() {
     if (!this.signUpForm.valid) {
-      this.toastr.error(
-        'Campurile marcate cu (*) sunt obligatorii.',
-        'Inregistrare esuata',
-        {
-          timeOut: 4000,
-          extendedTimeOut: 0,
-        }
-      );
+      // this.toastr.error(
+      //   'Campurile marcate cu (*) sunt obligatorii.',
+      //   'Inregistrare esuata',
+      //   {
+      //     timeOut: 4000,
+      //     extendedTimeOut: 0,
+      //   }
+      // );
     }
     else {
       var body = {
         userName: this.signUpForm.value.userName,
         email: this.signUpForm.value.email,
         password: this.signUpForm.value.password,
+        role: '',
+        token: ''
       };
       this.service.register(body).subscribe(
         (res: any) => {
           if (res.succeeded) {
-            this.toastr.success('Contul dumneavoastra a fost creat cu succes', 'Inregistrare realizata cu succes.', {
-              timeOut: 4000,
-              extendedTimeOut: 0,
-            });
+            // this.toastr.success('Contul dumneavoastra a fost creat cu succes', 'Inregistrare realizata cu succes.', {
+            //   timeOut: 4000,
+            //   extendedTimeOut: 0,
+            // });
             this.router.navigate(['login']);
           }
           else {
             res.errors.forEach((element: any) => {
               switch (element.code) {
                 case 'DuplicateUserName':
-                  this.toastr.error('Acest user este deja folosit!', 'Eroare la inregistrare.')
+                  // this.toastr.error('Acest user este deja folosit!', 'Eroare la inregistrare.')
                   break;
 
                 default:
-                  this.toastr.error(element.description, 'Eroare la inregistrare.')
+                  // this.toastr.error(element.description, 'Eroare la inregistrare.')
                   break;
               }
             });
@@ -82,11 +83,11 @@ export class SignupComponent implements OnInit{
         },
         err => {
           if (err.status == 400) {
-            this.toastr.error(err.error, 'Inregistrare esuata.',
-              {
-                timeOut: 4000,
-                extendedTimeOut: 0,
-              });
+            // this.toastr.error(err.error, 'Inregistrare esuata.',
+            //   {
+            //     timeOut: 4000,
+            //     extendedTimeOut: 0,
+            //   });
           }
         }
       )

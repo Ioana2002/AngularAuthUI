@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AuthService {
 
-  private baseUrl:string = "https://localhost:7216"
+  private baseUrl:string = "http://localhost:19248"
   constructor(private fb: FormBuilder, private http : HttpClient) { }
 
   formModel = this.fb.group({
@@ -41,6 +41,10 @@ export class AuthService {
   }
 
   login(loginObj:any){
-    return this.http.post<any>(`${this.baseUrl}/User/authenticate`, loginObj);
+    return this.http.post<any>(`${this.baseUrl}/ApplicationUser/Login`, loginObj);
+  }
+
+  getUserProfile() {
+    return this.http.get(this.baseUrl + '/Profile/GetUserProfile');
   }
 }

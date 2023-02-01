@@ -11,13 +11,17 @@ import { DashboardComponent } from './componets/dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './componets/home/home.component';
+import { NavigationBarComponent } from './componets/page-components/navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
