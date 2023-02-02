@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit{
       .subscribe(
         (res:any)=>{
          localStorage.setItem('token', res.token);
+         localStorage.setItem('role', res.role);
          this.router.navigateByUrl('/home');
         },
         err=>{

@@ -13,6 +13,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './componets/home/home.component';
 import { NavigationBarComponent } from './componets/page-components/navigation-bar/navigation-bar.component';
+import { AdminPanelComponent } from './componets/admin-panel/admin-panel.component';
+import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NavigationBarComponent } from './componets/page-components/navigation-b
     SignupComponent,
     DashboardComponent,
     HomeComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    AdminPanelComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
