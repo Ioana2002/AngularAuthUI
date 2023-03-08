@@ -1,0 +1,78 @@
+div.jumbotron.carousel-hero {
+    color: #fff;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-bottom: 0;
+  }
+  
+  div.jumbotron.hero-nature {
+    background-image: url('../../assets/img/excursii.jpg');
+  }
+  
+  div.jumbotron.hero-photography {
+    background-image: url('../../assets/img/cazuri.jpg');
+  }
+  
+  div.jumbotron.hero-technology {
+    background-image: url('../../assets/img/activitati.jpg');
+  }
+  
+  h1.hero-title, h2.hero-title, h3.hero-title {
+    text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.39), 
+	  -3px 0px 7px rgba(0, 0, 0, 0.541), 
+	  0px 4px 7px rgba(0, 0, 0, 0.527);
+    color: #fff;
+  }
+  
+  p.hero-subtitle {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 10px 15px;
+    color: #fff;
+    text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.39), 
+	  -3px 0px 7px rgba(0, 0, 0, 0.541), 
+	  0px 4px 7px rgba(0, 0, 0, 0.527);
+
+  }
+  
+  .plat {
+    border-radius: 0px;
+  }
+  
+  .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0 #048f32!important;
+  }
+  
+  .btn-primary:hover {
+    color: #fff;
+    background-color: #019014;
+    border-color: #019019cb;
+  }
+  
+  .btn.btn-primary {
+    background-color: #019014!important;
+    border-color: #019019cb!important;
+    
+  }
+  
+  .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 .2rem rgba(0, 255, 0, 0.5);
+  }
+  
+  * {
+    /*box-sizing: inherit;*/
+  }
+  
+  *:before, *:after {
+    /*box-sizing: inherit;*/
+  }
+  
+  span {
+    font-style: inherit;
+    font-weight: inherit;
+  }
+  
+  

@@ -15,6 +15,7 @@ import { HomeComponent } from './componets/home/home.component';
 import { NavigationBarComponent } from './componets/page-components/navigation-bar/navigation-bar.component';
 import { AdminPanelComponent } from './componets/admin-panel/admin-panel.component';
 import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
+import { FooterComponent } from './componets/page-components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
     HomeComponent,
     NavigationBarComponent,
     AdminPanelComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
