@@ -16,6 +16,7 @@ import { NavigationBarComponent } from './componets/page-components/navigation-b
 import { AdminPanelComponent } from './componets/admin-panel/admin-panel.component';
 import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
 import { FooterComponent } from './componets/page-components/footer/footer.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './componets/page-components/footer/footer.compo
     NavigationBarComponent,
     AdminPanelComponent,
     ForbiddenComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

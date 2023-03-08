@@ -21,6 +21,8 @@ export class NavigationBarComponent {
 
   Logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('profile_picture');
+    localStorage.removeItem('profile');
     this.router.navigate(['/login']);
   }
 
