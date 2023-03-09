@@ -3,7 +3,7 @@ import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+
 import { Inject } from '@angular/core';
 
 

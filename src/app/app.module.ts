@@ -9,7 +9,7 @@ import { LoginComponent } from './componets/login/login.component';
 import { SignupComponent } from './componets/signup/signup.component';
 import { DashboardComponent } from './componets/dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './componets/home/home.component';
 import { NavigationBarComponent } from './componets/page-components/navigation-bar/navigation-bar.component';
@@ -36,8 +36,7 @@ import { ProfileComponent } from './user/profile/profile.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

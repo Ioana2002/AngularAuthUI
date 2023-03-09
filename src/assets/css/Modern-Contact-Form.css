@@ -91,8 +91,11 @@ input[type="text"], input[type="email"], input[type="tel"], textarea {
 .textHeader {
   font-size: 70px;
   font-weight: 600;
-  background-image: linear-gradient(to left, #378114, #88ca8b);
+  background-image: linear-gradient(to left, #266808, #acd9ae);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  
 }
+
+
