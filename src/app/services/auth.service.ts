@@ -47,6 +47,43 @@ export class AuthService {
   getUserProfile() {
     return this.http.get(this.baseUrl + '/Profile/GetUserProfile');
   }
+  getAllProfiles() {
+    return this.http.get(this.baseUrl + '/Profile/GetProfiles');
+  }
+  getUserProfileById(id: string) {
+    return this.http.get(this.baseUrl + '/Profile/GetUserProfileById/' + id);
+  }
+  uploadProfile(formData: any) {
+    return this.http.post(this.baseUrl + '/Profile/UploadProfile', formData);
+  }
+  updateProfilePicture(formData: any) {
+    return this.http.post(
+      this.baseUrl + '/Profile/UpdateProfilePicture',
+      formData
+    );
+  }
+  UpdateProfileField(formData:any){
+    return this.http.post(
+      this.baseUrl + '/Profile/UpdateProfileField',
+      formData
+    );
+  }
+  getProfilePicture() {
+    return this.http.get(this.baseUrl + '/Profile/GetProfilePicture');
+  }
+
+  getAccountInfo() {
+    return this.http.get(this.baseUrl + '/Profile/GetAccountInfo');
+  }
+  changePassword(formData: any) {
+    return this.http.post(
+      this.baseUrl + '/ApplicationUser/ChangePassword',
+      formData
+    );
+  }
+  resetPassword(formData: any) {
+    return this.http.post(this.baseUrl + '/Password/ResetPassword', formData)
+  }
 
   /*roleMatch(allowedRoles): boolean {
     var isMatch = false;

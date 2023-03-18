@@ -1,0 +1,123 @@
+img:hover {
+    cursor: pointer;
+}
+
+::ng-deep #mat-tab-content-0-0 > div {
+    overflow: unset;
+}
+
+::ng-deep #mat-tab-content-0-1 > div{
+    overflow: unset;
+}
+
+::ng-deep #mat-tab-content-0-2 > div{
+    overflow: unset;
+}
+
+div.row.content {
+    justify-content: center;
+    padding: 5px 0px;
+}
+
+div.row.content.mt-40{
+    margin-top: 40px;
+}
+
+div.col.content {
+    max-width: 80% !important;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+mat-icon.notranslate.material-icons.mat-icon-no-color{
+    font-size: x-large;
+}
+
+::ng-deep div.mat-tab-labels {
+    background: #343a4080;
+}
+
+::ng-deep .mat-tab-label {
+    color: white;
+}
+
+.column-all-itmes {
+    background: white;
+    padding: 40px 20px;
+    max-width: 950px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin: auto;
+}
+
+::ng-deep .example-tooltip-red {
+    background: var(--bs-danger) !important;
+}
+
+mat-form-field {
+    width: 100%;
+    max-width: 270px;
+    padding-top: 15px;
+}
+
+.center-cropped {
+    width: 225px !important;
+    height: 225px !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+div.row.tab-content {
+    padding: 0px 0px 50px 0px;
+    border-radius: 10px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: var(--bs-danger);
+}
+
+.file-input {
+    display: none;
+}
+
+div.file-upload {
+    max-width: 270px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.upload-btn:hover{
+    background: var(--bs-danger);
+}
+
+.warning-massage {
+    color: gray;
+    font-size: small;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.mat-error {
+    height: 30px;
+}
+::ng-deep .mat-tab-header-pagination-controls-enabled {
+    background: white;
+}
+
+::ng-deep .mat-raised-button:hover {
+    color: var(--bs-gray-600) !important;
+}
+
+.change-profile-picture-button:hover{
+    border: 4px solid var(--bs-danger) !important;
+}
+
+// .row{
+//     margin-right: 0px !important;
+// }
+
+// .col{
+//     padding-right: 0px !important;
+// }

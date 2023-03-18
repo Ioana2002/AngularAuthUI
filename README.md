@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+<div class="row">
+                            <div class="col">
+                                <div class="modern-form__form-group--padding-t form-group mb-3"><textarea class="form-control input modern-form__form-control--textarea" placeholder="Despre mine"></textarea>
+                                    <div class="line-box">
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

@@ -1,95 +1,351 @@
 <body>
     <navigation-bar></navigation-bar>
-    <div class="container pt-4 pt-xl-5">
-        <section class="getintouch">
-            <div class="container modern-form">
-                <div class="text-center">
-                    <h4 class="textHeader">Date Generale</h4>
-                    <hr style="border: 2px solid rgb(4, 165, 4); margin-left: auto;margin-right: auto;text-align: center; margin-left: 0;">
+    <div class="container-fluid">
+        <section style="padding: 60px 0px 0px 0px;">
+            <div class="text-center profile-card" style="margin: 0px;background-color: #ffffff; padding-bottom: 20px;">
+                <div class="profile-card-img"
+                    style="height: 260px;background: linear-gradient(180deg, black 0%, white 100%), var(--bs-gray-800);color: rgb(33, 37, 41);">
                 </div>
-                
-                <div class="modern-form__form-container">
-                    <form>
-                        <div class="row content">
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-r form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Nume">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Prenume">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                            </div>
+                <input type="file" class="file-input" (change)="updateProfilePicture($event)" #ProfilePictureUpload>
+                <img class="change-profile-picture-button"
+                    style="width: 40px;height: 40px;border-radius: 20px;transform: perspective(0px);border: 4px solid var(--bs-gray-800);transform: translateX(110px);"
+                    (click)="ProfilePictureUpload.click()" src="assets/img/empty-change-profile.png"
+                    matTooltip="Schimba poza de profil" matTooltipClass="example-tooltip-red">
+                <div style="margin: 0px;margin-top: -40px;">
+                    <img class="rounded-circle"
+                        style="background-image: url({{this.ProfilePicture.value}}); margin-top: -70px;height: 225px;border: 7px solid #cccd67; width: 225px;background-position:center;background-size: cover">
+                    <div class="row">
+                        <div class="col" style="padding-right: 0px;padding-left: 4px;">
+                            <h3
+                                style="font-family: Poppins, sans-serif;font-weight: bold;text-align: center;padding: 0px;padding-top: 0px;margin-top: 10px;">
+                                {{this.userLongName}}
+                                <!--<img
+                                        style="width: 25px;height: 25px;border: 2px solid var(--bs-gray-800);/*background: #ffffff;*/border-radius: 8px;margin-left: 11px;"
+                                        src="assets/img/romania-flag.jpg">-->
+                            </h3>
                         </div>
-                        <div class="row content">
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Telefon">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Oras">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="padding-right: 0px;padding-left: 4px;">
+                            <h3
+                                style="font-family: Poppins, sans-serif;font-size: 14px;text-align: center;padding: 0px;padding-top: 0px;margin-top: 10px;">
+                                Username: <b>{{this.username}}</b>
+
+                            </h3>
                         </div>
-                        <div class="row content">
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Judet">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs justify-content-center" role="tablist" hidden>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab"
+                                href=""></a></li>
+                    </ul>
+                    <mat-tab-group mat-align-tabs="center">
+                        <mat-tab label="Profil">
+                            <div class="row tab-content">
+                                <div class="col content">
+                                    <form [formGroup]="profileModel" class="column-all-itmes">
+                                        <div class="row content">
+                                            <h2 class="text-info fw-light mb-5"
+                                                style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                                                Date Generale</h2>
+                                            <hr class="light my-4"
+                                                style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Nume</mat-label>
+                                                <input matInput placeholder="Nume" type="text" formControlName="Nume"
+                                                    required>
+                                                <mat-error *ngIf="profileModel.get('Nume')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Prenume</mat-label>
+                                                <input matInput placeholder="Prenume" type="text"
+                                                    formControlName="Prenume" required>
+                                                <mat-error *ngIf="profileModel.get('Prenume')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Telefon</mat-label>
+                                                <input matInput placeholder="Ex: 0722555333" type="text"
+                                                    formControlName="Telefon" required>
+                                                <mat-error *ngIf="profileModel.get('Telefon')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Oras</mat-label>
+                                                <input matInput placeholder="Oras" type="text" formControlName="Oras"
+                                                    required>
+                                                <mat-error *ngIf="profileModel.get('Oras')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Adresa</mat-label>
+                                                <input matInput placeholder="Adresa" type="text"
+                                                    formControlName="Adresa" required>
+                                                <mat-error *ngIf="profileModel.get('Adresa')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Judet</mat-label>
+                                                <input matInput placeholder="Judet" type="text" formControlName="Judet"
+                                                    required>
+                                                <mat-error *ngIf="profileModel.get('Judet')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Gen</mat-label>
+                                                <mat-select placeHolder="Alegeti o optiune" formControlName="Gen"
+                                                    required>
+                                                    <mat-option value="M">Masculin</mat-option>
+                                                    <mat-option value="F">Feminin</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="profileModel.get('Gen')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Varsta</mat-label>
+                                                <input matInput placeholder="Varsta" type="text" formControlName="Varsta"
+                                                    required>
+                                                <mat-error *ngIf="profileModel.get('Varsta')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Tara</mat-label>
+                                                <input matInput placeholder="Tara" type="text" formControlName="Tara"
+                                                    required>
+                                                <mat-error *ngIf="profileModel.get('Tara')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="margin-top: 50px;">
+                                            <div class="row content">
+                                                <h2 class="text-info fw-light mb-5"
+                                                    style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                                                    Carte de Identitate</h2>
+                                                <hr class="light my-4"
+                                                    style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                            </div>
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Serie CI</mat-label>
+                                                <input matInput #serieCI maxlength="2" placeholder="Ex. XV" required
+                                                    formControlName="SerieCI">
+                                                <mat-hint align="end">{{serieCI.value.length}} / 2</mat-hint>
+                                                <mat-error *ngIf="profileModel.get('SerieCI')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Nr. CI</mat-label>
+                                                <input matInput #nrCI maxlength="6" placeholder="Ex. 000000" type="number"
+                                                    formControlName="NrCI" required>
+                                                <mat-hint align="end">{{nrCI.value.length}} / 6</mat-hint>
+                                                <mat-error *ngIf="profileModel.get('NrCI')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>CNP</mat-label>
+                                                <input matInput #CNP maxlength="13" placeholder="CNP"
+                                                    formControlName="CNP" required>
+                                                <mat-hint align="end">{{CNP.value.length}} / 13</mat-hint>
+                                                <mat-error *ngIf="profileModel.get('CNP')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content">
+                                            <div *ngIf="this.StatusCI.value == ''" style="max-width: 270px;">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Carte de identitate *</mat-label>
+                                                    <input matInput [formControl]="StatusCI" style="color: red;"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                            <div *ngIf="this.StatusCI.value != ''" style="max-width: 270px;">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Carte de identitate *</mat-label>
+                                                    <input matInput [formControl]="StatusCI" style="color: green"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                            <input type="file" class="file-input" (change)=" updateIdentityCard($event)"
+                                                #fileUpload>
+                                            <div class="file-upload">
+                                                <button mat-mini-fab color="primary" class="upload-btn"
+                                                    (click)="fileUpload.click()" style="margin-right: 10px;">
+                                                    <mat-icon>attach_file</mat-icon>
+                                                </button>{{fileNameCI || "Adauga document"}}
+                                            </div>
+                                        </div>
+                                        <div class="row content" style="margin-top: 20px;">
+                                            <button mat-raised-button type="button" (click)="onSaveChangesFirstPanel()"
+                                                style="max-width: 250px;">Save
+                                                Changes</button>
+                                        </div>
+                                        <br>
+                                        <div class="warning-massage">
+                                            Toate campurile marcate cu ( * ) sunt obligatorii</div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Adresa">
-                                    <div class="line-box">
-                                        <div class="line"></div>
+                        </mat-tab>
+                        <!-- <mat-tab label="Date licentiere">
+                                <div class="row tab-content">
+                                    <div class="col content">
+                                        <form [formGroup]="dateLicentiereModel" class="column-all-itmes">
+                                            <div class="row content">
+                                                <h2 class="text-info fw-light mb-5"
+                                                    style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                                                    Licentiere</h2>
+                                                <hr class="light my-4"
+                                                    style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                            </div>
+                                           
+                                            <div class="row content" style="margin-top: 20px;">
+                                                <button mat-raised-button type="button"
+                                                    (click)="onSaveChangesSecondPanel()" style="max-width: 250px;">Save
+                                                    Changes</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row content">
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Tara">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
+                            </mat-tab> -->
+                        <mat-tab label="Informatii Cont">
+                            <div class="row tab-content">
+                                <div class="col content">
+                                    <form [formGroup]="accountModel" class="column-all-itmes">
+                                        <div class="row content">
+                                            <h2 class="text-info fw-light mb-5"
+                                                style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                                                Informatii Generale</h2>
+                                            <hr class="light my-4"
+                                                style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Username</mat-label>
+                                                <input matInput placeholder="Username" type="text"
+                                                    formControlName="UserName" readonly>
+                                                <mat-error *ngIf="accountModel.get('UserName')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Email</mat-label>
+                                                <input matInput placeholder="Email" type="text" formControlName="Email"
+                                                    required>
+                                                <mat-error *ngIf="accountModel.get('Email')!.hasError('required')"
+                                                    class="warning-massage-field">
+                                                    Campul este obligatoriu
+                                                </mat-error>
+                                                <mat-error
+                                                    *ngIf="accountModel.get('Email')!.touched && accountModel.get('Email')!.errors?.email"
+                                                    class="warning-massage-field">
+                                                    Adresa de email invalida
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content mt-40">
+                                            <h2 class="text-info fw-light mb-5"
+                                                style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                                                Schimbare Parola</h2>
+                                            <hr class="light my-4"
+                                                style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                        </div>
+                                        <div class="row content" formGroupName="Passwords">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Parola</mat-label>
+                                                <input matInput [type]="hidePassword ? 'password' : 'text'"
+                                                    formControlName="Password">
+                                                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                                                    [attr.aria-label]="'Hide password'"
+                                                    [attr.aria-pressed]="hidePassword">
+                                                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}
+                                                    </mat-icon>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="accountModel.get('Passwords.Password')!.touched && accountModel.get('Passwords.Password')!.errors?.pattern"
+                                                    class="warning-massage-field">
+                                                    Parola trebuie sa contina cel putin: un numar, o litera mare si
+                                                    6 caractere
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content" formGroupName="Passwords">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Confirmare Parola</mat-label>
+                                                <input matInput [type]="hideConfirmPassword ? 'password' : 'text'"
+                                                    formControlName="ConfirmPassword">
+                                                <button mat-icon-button matSuffix
+                                                    (click)="hideConfirmPassword = !hideConfirmPassword"
+                                                    [attr.aria-label]="'Hide password'"
+                                                    [attr.aria-pressed]="hideConfirmPassword">
+                                                    <mat-icon>{{hideConfirmPassword ? 'visibility_off' :
+                                                        'visibility'}}
+                                                    </mat-icon>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="accountModel.get('Passwords.ConfirmPassword')!.errors?.mustMatch"
+                                                    class="warning-massage-field">
+                                                    Parolele de confirmare nu se potriveste
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row content" style="margin-top: 20px;">
+                                            <button mat-raised-button type="button" (click)="changePassword()"
+                                                style="max-width: 250px;">Save
+                                                Changes</button>
+                                        </div>
+                                        <br>
+                                        <div class="warning-massage">
+                                            Toate campurile marcate cu ( * ) sunt obligatorii</div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col col-contact">
-                                <div class="modern-form__form-group--padding-l form-group mb-3"><input class="form-control input input-tr" type="text" placeholder="Gen">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="modern-form__form-group--padding-t form-group mb-3"><textarea class="form-control input modern-form__form-control--textarea" placeholder="Despre mine"></textarea>
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center"><button class="btn btn-primary submit-now" type="submit">Save changes</button></div>
-                        </div>
-                    </form>
+                        </mat-tab>
+                    </mat-tab-group>
                 </div>
             </div>
         </section>
-    </div>
-    <app-footer></app-footer>
-</body>
+    </div>                 
+    <app-footer></app-footer>                  
+</body> 
