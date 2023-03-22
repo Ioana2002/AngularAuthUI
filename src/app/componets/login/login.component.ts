@@ -48,17 +48,63 @@ export class LoginComponent implements OnInit{
       console.log(this.loginForm.value)
       //Send the object to database
       this.service.login(this.loginForm.value)
-      .subscribe(
-        (res:any)=>{
-         localStorage.setItem('token', res.token);
-         localStorage.setItem('role', res.role);
-         this.router.navigateByUrl('/home');
-        },
-        err=>{
-          if(err.status == 400)
-          console.log(err);
-            }
+      // .subscribe(
+      //   (res:any)=>{
+      //    localStorage.setItem('token', res.token);
+      //    localStorage.setItem('role', res.role);
+      //    //this.router.navigateByUrl('/home');
+         
+      //   },
+      //   err=>{
+      //     if(err.status == 400)
+      //     console.log(err);
+      //       }
         
+      // );
+      .subscribe(
+        (res: any) => {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('roles', res.role);
+          this.service.getUserProfile().subscribe(
+            (response: any) => {
+              if (response != null) {
+                localStorage.setItem('profile', JSON.stringify(response.profile));
+              }
+              this.service.getProfilePicture().subscribe(
+                (resp: any) => {
+                  if (resp != null) {
+                    localStorage.setItem('profile_picture', resp.picture_url);
+                  }
+                  this.service.getAccountInfo().subscribe(
+                    (aResp: any) => {
+                      localStorage.setItem('account_info', JSON.stringify(aResp));
+                      this.router.navigateByUrl('user/profile');
+                    },
+                    (err) => {
+                      console.log(err);
+                    }
+                  );
+                },
+                (err) => {
+                  console.log(err);
+                }
+              );
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        },
+        (err) => {
+          // console.log(err.error.message)
+          // if (err.status == 400)
+          //   this.toastr.error(
+          //     'Incorrect username or password.',
+          //     'Authentication failed.'
+          //   );
+          if(err.status == 400)
+             console.log(err);
+        }
       );
 
 

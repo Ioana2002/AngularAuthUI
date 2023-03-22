@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private baseUrl:string = "http://localhost:19248"
+  readonly baseUrl = environment.apiUrl;
+  //private baseUrl:string = "http://localhost:19248"
   constructor(private fb: FormBuilder, private http : HttpClient) { }
 
   formModel = this.fb.group({
@@ -63,8 +64,8 @@ export class AuthService {
     );
   }
   UpdateProfileField(formData:any){
-    return this.http.post(
-      this.baseUrl + '/Profile/UpdateProfileField',
+    return this.http.post<any>(
+      `${this.baseUrl}/Profile/UpdateProfileField`,
       formData
     );
   }
@@ -73,7 +74,7 @@ export class AuthService {
   }
 
   getAccountInfo() {
-    return this.http.get(this.baseUrl + '/Profile/GetAccountInfo');
+    return this.http.get(`${this.baseUrl}/Profile/GetAccountInfo`);
   }
   changePassword(formData: any) {
     return this.http.post(

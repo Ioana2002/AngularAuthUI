@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -38,6 +38,8 @@ import { AdminPanelComponent } from './componets/admin-panel/admin-panel.compone
 import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
 import { FooterComponent } from './componets/page-components/footer/footer.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { DatePipe } from '@angular/common';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,11 @@ import { ProfileComponent } from './user/profile/profile.component';
     MatPaginatorModule,
     MatDialogModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DatePipe,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

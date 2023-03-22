@@ -15,14 +15,14 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: AuthService,
     private af: AngularFireStorage
-  ) {}
+  ) { }
 
-  
+
   fileNameCI = '';
   hidePassword = true;
   hideConfirmPassword = true;
@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit{
   basePathCI = '/Identity_Cards_Photos';
   basePathProfilePictures = '/Profile_Pictures';
   profilePictureFileUpload: any;
- 
+
 
 
   profileModel = this.fb.group({
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit{
     Email: ['', [Validators.email, Validators.required]],
     Passwords: this.fb.group(
       {
-        Password: ['', [Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,}')]],
+        Password: ['', [Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z]).{4,}')]],
         ConfirmPassword: ['']
       },
       { validator: MustMatch('Password', 'ConfirmPassword') }
@@ -82,6 +82,8 @@ export class ProfileComponent implements OnInit{
     }
     if (profilePicture != undefined || profilePicture != null) {
       this.ProfilePicture.value = profilePicture;
+      
+      
     }
     this.service.getUserProfile().subscribe(
       (response: any) => {
@@ -107,7 +109,7 @@ export class ProfileComponent implements OnInit{
               NrCI: userProfile.numar_CI,
               CNP: userProfile.cnp,
               Tara: userProfile.tara,
-              PozaCI: userProfile.poza_CI,
+              PozaCI: userProfile.poza_CI
             });
 
             //console.log(userProfile, this.profileModel)
@@ -137,20 +139,24 @@ export class ProfileComponent implements OnInit{
       const uploadTask = this.af.upload(filePath, this.identityCardFile);
 
       uploadTask
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          storageRef.getDownloadURL().subscribe((downloadURL: any) => {
-            this.profileModel.patchValue({ PozaCI: downloadURL });
-            this.StatusCI.value = 'Actualizata';
-            console.log(downloadURL)
-          });
-        })
-      )
-      .subscribe();
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            storageRef.getDownloadURL().subscribe((downloadURL: any) => {
+              this.profileModel.patchValue({ PozaCI: downloadURL });
+              this.StatusCI.value = 'Actualizata';
+              console.log(downloadURL)
+            });
+          })
+        )
+        .subscribe();
     }
   }
   updateProfilePicture(event: any) {
+    // var body ={
+    //   UserId: '',
+    //   ProfilePictureId: ''
+    // };
     this.profilePictureFile = event.target.files[0];
 
     const filePath =
@@ -181,6 +187,7 @@ export class ProfileComponent implements OnInit{
       )
       .subscribe();
   }
+
   onSaveChangesFirstPanel() {
     for (var controlName in this.profileModel.controls) {
       var control = this.profileModel.get(controlName);
@@ -194,6 +201,7 @@ export class ProfileComponent implements OnInit{
         //     extendedTimeOut: 0,
         //   }
         // );
+        window.alert("Va rugam sa completati toate campurile obligatorii")
         return;
       }
     }
@@ -211,16 +219,18 @@ export class ProfileComponent implements OnInit{
       Poza_CI: this.profileModel.value.PozaCI,
       CNP: this.profileModel.value.CNP,
       Serie_CI: this.profileModel.value.SerieCI,
-      Numar_CI: this.profileModel.value.NrCI
+      Numar_CI: this.profileModel.value.NrCI,
+      UserId: '',
+      ProfileId: ''
     };
 
     //console.log(body)
 
     this.service.uploadProfile(body).subscribe(
-      (response) => {
+      (response: any) => {
         var userRoles = localStorage.getItem('roles');
-        if (!userRoles?.includes('Participant'))
-          userRoles = userRoles + ',Participant';
+        if (!userRoles?.includes('User'))
+          userRoles = userRoles + ',User';
         localStorage.setItem('roles', userRoles);
         this.service.getUserProfile().subscribe(
           (response: any) => {
@@ -237,67 +247,70 @@ export class ProfileComponent implements OnInit{
           },
           (err) => {
             console.log(err);
-          //   this.toastr.error(err.error, 'Eroare',
-          //   {
-          //     timeOut: 4000,
-          //     extendedTimeOut: 0,
-          //   }
-          // );
+            //   this.toastr.error(err.error, 'Eroare',
+            //   {
+            //     timeOut: 4000,
+            //     extendedTimeOut: 0,
+            //   }
+            // );
           }
-        );
-      },
-      (err) => {
-        console.log(err);
-        // this.toastr.error(err.error, 'Eroare',
-        //   {
-        //     timeOut: 4000,
-        //     extendedTimeOut: 0,
-        //   }
-        // );
-      }
-    );
+        )
+      })
+  };
+  // },
+  // (err) => {
+  //   console.log(err);
+  //   // this.toastr.error(err.error, 'Eroare',
+  //   //   {
+  //   //     timeOut: 4000,
+  //   //     extendedTimeOut: 0,
+  //   //   }
+  //   // );
+  // }
+  // );
 
-}
-changePassword() {
-  if (!this.accountModel.valid) {
-    // this.toastr.error(
-    //   'Va rugam sa introduceti corect datele pentru actualizare.',
-    //   'Actualizare esuata',
-    //   {
-    //     timeOut: 4000,
-    //     extendedTimeOut: 0,
-    //   }
-    // );
-  }
-  else {
-    var body = {
-      UserName: this.accountModel.value.UserName,
-      Email: this.accountModel.value.Email,
-      Password: this.accountModel.value.Passwords.Password
-    };
-    this.service.changePassword(body).subscribe((response: any) => {
-      // this.toastr.success('Datele contului au fost actualizate cu succes', 'Actualizare reusita',
+  changePassword() {
+    if (!this.accountModel.valid) {
+      // this.toastr.error(
+      //   'Va rugam sa introduceti corect datele pentru actualizare.',
+      //   'Actualizare esuata',
       //   {
       //     timeOut: 4000,
       //     extendedTimeOut: 0,
-      //   });
-      if (response.email != undefined && response.username != undefined) {
-        var account = {
-          username: response.username,
-          email: response.email
-        }
+      //   }
+      // );
+    }
+    else {
+      var body = {
+        UserName: this.accountModel.value.UserName,
+        Email: this.accountModel.value.Email,
+        Password: this.accountModel.value.Passwords.Password,
+        role: '',
+        token: ''
+      };
+      this.service.changePassword(body).subscribe((response: any) => {
+        // this.toastr.success('Datele contului au fost actualizate cu succes', 'Actualizare reusita',
+        //   {
+        //     timeOut: 4000,
+        //     extendedTimeOut: 0,
+        //   });
+        if (response.email != undefined && response.username != undefined) {
+          var account = {
+            username: response.username,
+            email: response.email
+          }
 
-        localStorage.setItem('account_info', JSON.stringify(account));
-      }
-      this.ngOnInit();
-    }, (err) => {
-      if (err.status == 400)
-        // this.toastr.error(
-        //   'Acest username se afla deja in baza de date.',
-        //   'Actualizare esuata.'
-        // );
-      console.log(err);
-    })
+          localStorage.setItem('account_info', JSON.stringify(account));
+        }
+        this.ngOnInit();
+      }, (err) => {
+        if (err.status == 400)
+          // this.toastr.error(
+          //   'Acest username se afla deja in baza de date.',
+          //   'Actualizare esuata.'
+          // );
+          console.log(err);
+      })
+    }
   }
-}
 }

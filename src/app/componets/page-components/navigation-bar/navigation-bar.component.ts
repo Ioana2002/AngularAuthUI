@@ -23,6 +23,9 @@ export class NavigationBarComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('profile_picture');
     localStorage.removeItem('profile');
+    localStorage.removeItem('account_info');
+    localStorage.removeItem('roles');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 

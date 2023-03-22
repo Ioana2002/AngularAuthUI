@@ -1,10 +1,10 @@
 <body>
     <navigation-bar></navigation-bar>
     <div class="container-fluid">
-        <section style="padding: 60px 0px 0px 0px;">
+        <section style="padding: 0px 0px 0px 0px;" >
             <div class="text-center profile-card" style="margin: 0px;background-color: #ffffff; padding-bottom: 20px;">
                 <div class="profile-card-img"
-                    style="height: 260px;background: linear-gradient(180deg, black 0%, white 100%), var(--bs-gray-800);color: rgb(33, 37, 41);">
+                    style="height: 260px;background: linear-gradient(180deg, green 0%, white 100%), var(--bs-gray-800);color: rgb(33, 37, 41);">
                 </div>
                 <input type="file" class="file-input" (change)="updateProfilePicture($event)" #ProfilePictureUpload>
                 <img class="change-profile-picture-button"
@@ -13,15 +13,12 @@
                     matTooltip="Schimba poza de profil" matTooltipClass="example-tooltip-red">
                 <div style="margin: 0px;margin-top: -40px;">
                     <img class="rounded-circle"
-                        style="background-image: url({{this.ProfilePicture.value}}); margin-top: -70px;height: 225px;border: 7px solid #cccd67; width: 225px;background-position:center;background-size: cover">
+                        style="background-image: url({{this.ProfilePicture.value}}); margin-top: -70px;height: 225px;border: 7px solid #26b94b; width: 225px;background-position:center;background-size: cover">
                     <div class="row">
                         <div class="col" style="padding-right: 0px;padding-left: 4px;">
                             <h3
                                 style="font-family: Poppins, sans-serif;font-weight: bold;text-align: center;padding: 0px;padding-top: 0px;margin-top: 10px;">
                                 {{this.userLongName}}
-                                <!--<img
-                                        style="width: 25px;height: 25px;border: 2px solid var(--bs-gray-800);/*background: #ffffff;*/border-radius: 8px;margin-left: 11px;"
-                                        src="assets/img/romania-flag.jpg">-->
                             </h3>
                         </div>
                     </div>
@@ -36,23 +33,23 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
+            <div class="row" >
+                <div class="col" >
                     <ul class="nav nav-tabs justify-content-center" role="tablist" hidden>
                         <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab"
-                                href=""></a></li>
+                                href="" ></a></li>
                     </ul>
                     <mat-tab-group mat-align-tabs="center">
-                        <mat-tab label="Profil">
+                        <mat-tab label="Profil" >
                             <div class="row tab-content">
                                 <div class="col content">
-                                    <form [formGroup]="profileModel" class="column-all-itmes">
+                                    <form [formGroup]="profileModel" class="column-all-itmes"  style="background-color: #26b94b2a;">
                                         <div class="row content">
                                             <h2 class="text-info fw-light mb-5"
                                                 style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
                                                 Date Generale</h2>
                                             <hr class="light my-4"
-                                                style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                                style="border-color: rgb(7, 180, 7); max-width: 170px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;">
                                         </div>
                                         <div class="row content">
                                             <mat-form-field class="example-full-width">
@@ -129,7 +126,7 @@
                                             </mat-form-field>
                                             <mat-form-field class="example-full-width">
                                                 <mat-label>Varsta</mat-label>
-                                                <input matInput placeholder="Varsta" type="text" formControlName="Varsta"
+                                                <input matInput placeholder="Varsta" type="number" formControlName="Varsta"
                                                     required>
                                                 <mat-error *ngIf="profileModel.get('Varsta')!.hasError('required')"
                                                     class="warning-massage-field">
@@ -152,7 +149,7 @@
                                                     style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
                                                     Carte de Identitate</h2>
                                                 <hr class="light my-4"
-                                                    style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                                style="border-color: rgb(7, 180, 7); max-width: 170px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;">
                                             </div>
                                         </div>
                                         <div class="row content">
@@ -225,27 +222,6 @@
                                 </div>
                             </div>
                         </mat-tab>
-                        <!-- <mat-tab label="Date licentiere">
-                                <div class="row tab-content">
-                                    <div class="col content">
-                                        <form [formGroup]="dateLicentiereModel" class="column-all-itmes">
-                                            <div class="row content">
-                                                <h2 class="text-info fw-light mb-5"
-                                                    style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
-                                                    Licentiere</h2>
-                                                <hr class="light my-4"
-                                                    style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
-                                            </div>
-                                           
-                                            <div class="row content" style="margin-top: 20px;">
-                                                <button mat-raised-button type="button"
-                                                    (click)="onSaveChangesSecondPanel()" style="max-width: 250px;">Save
-                                                    Changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </mat-tab> -->
                         <mat-tab label="Informatii Cont">
                             <div class="row tab-content">
                                 <div class="col content">
@@ -255,7 +231,7 @@
                                                 style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
                                                 Informatii Generale</h2>
                                             <hr class="light my-4"
-                                                style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                            style="border-color: rgb(7, 180, 7); max-width: 170px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;">
                                         </div>
                                         <div class="row content">
                                             <mat-form-field class="example-full-width">
@@ -289,7 +265,7 @@
                                                 style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
                                                 Schimbare Parola</h2>
                                             <hr class="light my-4"
-                                                style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
+                                            style="border-color: rgb(7, 180, 7); max-width: 170px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;">
                                         </div>
                                         <div class="row content" formGroupName="Passwords">
                                             <mat-form-field class="example-full-width">
@@ -305,8 +281,8 @@
                                                 <mat-error
                                                     *ngIf="accountModel.get('Passwords.Password')!.touched && accountModel.get('Passwords.Password')!.errors?.pattern"
                                                     class="warning-massage-field">
-                                                    Parola trebuie sa contina cel putin: un numar, o litera mare si
-                                                    6 caractere
+                                                    Parola trebuie sa contina cel putin: un numar si
+                                                    4 caractere
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
