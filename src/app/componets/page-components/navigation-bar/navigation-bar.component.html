@@ -8,7 +8,7 @@
                 <li class="nav-item"><a class="nav-link" href="services.html">Despre noi</a></li>
                 <li class="nav-item"><a class="nav-link" href="projects.html">Cazuri sociale</a></li>
                 <li class="nav-item"><a class="nav-link" href="pricing.html">Activitati</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Excursii</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/excursii">Excursii</a></li>
                 <li class="nav-item" *ngIf="authenticated"><a class="nav-link" routerLink="/user/profile">Profil</a></li>
             </ul>
             <a *ngIf="!authenticated" role="button" class="btn btn-primary shadow" routerLink="/login" style = "margin-top:auto;">Sign in</a>

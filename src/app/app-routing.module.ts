@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './componets/dashboard/dashboard.component';
 import { LoginComponent } from './componets/login/login.component';
 import { SignupComponent } from './componets/signup/signup.component';
 import { HomeComponent } from './componets/home/home.component';
 import { ProfileComponent } from './user/profile/profile.component';
-import { AuthGuard } from './auth/auth.guard';
-import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
-import { AdminPanelComponent } from './componets/admin-panel/admin-panel.component';
+import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/excursii-general.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -15,8 +12,7 @@ const routes: Routes = [
   {path:'signup', component: SignupComponent},
   {path:'home', component: HomeComponent},
   {path:'user/profile', component: ProfileComponent},
-  {path:'forbidden', component: ForbiddenComponent},
-  {path:'adminpanel', component: AdminPanelComponent,canActivate:[AuthGuard], data: {permittedRoles:['Admin']}}
+  {path:'excursii', component: ExcursiiGeneralComponent}
 ];
 
 @NgModule({

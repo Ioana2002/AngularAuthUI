@@ -35,11 +35,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './componets/home/home.component';
 import { NavigationBarComponent } from './componets/page-components/navigation-bar/navigation-bar.component';
 import { AdminPanelComponent } from './componets/admin-panel/admin-panel.component';
-import { ForbiddenComponent } from './componets/forbidden/forbidden.component';
 import { FooterComponent } from './componets/page-components/footer/footer.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { DatePipe } from '@angular/common';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/excursii-general.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +50,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HomeComponent,
     NavigationBarComponent,
     AdminPanelComponent,
-    ForbiddenComponent,
     FooterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExcursiiGeneralComponent
   ],
   imports: [
     BrowserModule,

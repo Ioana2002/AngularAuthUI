@@ -8,7 +8,7 @@
                 </div>
                 <input type="file" class="file-input" (change)="updateProfilePicture($event)" #ProfilePictureUpload>
                 <img class="change-profile-picture-button"
-                    style="width: 40px;height: 40px;border-radius: 20px;transform: perspective(0px);border: 4px solid var(--bs-gray-800);transform: translateX(110px);"
+                    style="width: 40px;height: 40px;border-radius: 20px;transform: perspective(0px);border: 4px solid var(--bs-gray-800);transform: translateX(110px);z-index: 2;"
                     (click)="ProfilePictureUpload.click()" src="assets/img/empty-change-profile.png"
                     matTooltip="Schimba poza de profil" matTooltipClass="example-tooltip-red">
                 <div style="margin: 0px;margin-top: -40px;">
@@ -43,7 +43,7 @@
                         <mat-tab label="Profil" >
                             <div class="row tab-content">
                                 <div class="col content">
-                                    <form [formGroup]="profileModel" class="column-all-itmes"  style="background-color: #26b94b2a;">
+                                    <form [formGroup]="profileModel" class="column-all-itmes"  style="background-color: #26b94b2a;border-color: #26b94b;">
                                         <div class="row content">
                                             <h2 class="text-info fw-light mb-5"
                                                 style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
