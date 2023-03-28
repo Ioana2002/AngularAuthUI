@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav" style = "height: 80px;">
+<!-- <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav" style = "height: 80px;">
     <div class="container"><a class="navbar-brand d-flex align-items-center" routerLink="/home"><span><img src = "assets/img/vdt.png" style = "width:70px; height:70px;"></span></a><button data-bs-toggle="collapse" class="navbar-toggler"
             data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
@@ -15,4 +15,35 @@
             <a *ngIf="authenticated" role="button" class="btn btn-primary shadow" (click)="Logout()" style = "margin-top:auto;">Logout</a>
         </div>
     </div>
+</nav> -->
+<nav class="navbar navbar-main navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav" style="background: #ffffff;display: block; padding-bottom: 0px;">
+    <div class="container"><a class="navbar-brand" href="#page-top"><img src="assets/img/vdt.png" style="width: 60px; height: 60px;"></a><button
+            data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
+            type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i
+                class="fa fa-align-justify"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto" style="align-items: center;">
+                <li class="nav-item"><a class="nav-link" routerLink="/home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Despre noi</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.html">Cazuri sociale</a></li>
+                <li class="nav-item"><a class="nav-link" href="pricing.html">Activitati</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/excursii">Excursii</a></li>
+                <li class="nav-item" *ngIf="authenticated"><a class="nav-link" routerLink="/user/profile">Profil</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="administrator">
+                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Administrare</a>
+                <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/administration">General</a> 
+                </div>
+            </li>
+                <a *ngIf="!authenticated" role="button" class="btn btn-primary shadow" routerLink="/login"
+                style="margin:auto;">Sign in</a>
+                <a *ngIf="authenticated" role="button" class="btn btn-primary shadow" (click)="Logout()"
+                style="margin:auto;">Logout</a>
+            </ul>
+        </div>
+    </div>
+   
 </nav>
+
+

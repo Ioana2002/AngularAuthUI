@@ -1,0 +1,22 @@
+#navbarResponsive > ul > li.nav-item.dropdown > div > a {
+    font-family: Poppins, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+a.nav-link:hover {
+    color: var(--bs-gray-600) !important;
+}
+
+@media (min-width: 992px) {
+    #mainNav {
+        border-color: transparent;
+        background-color: transparent;
+        border-bottom: 2px solid whitesmoke;
+    }
+
+    div.dropdown-menu.show{
+        transition: all .5s ease;
+    }
+}

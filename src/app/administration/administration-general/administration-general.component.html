@@ -1,0 +1,112 @@
+<body>
+    <navigation-bar></navigation-bar>
+    <div class="container-fluid">
+        <section class="first-section">
+            <div class="container">
+                <div class="row" style="padding-top: 180px; text-align: center;">
+                    <div class="col-lg-10 mx-auto">
+                        <h1 class="text-uppercase"
+                        style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                            <strong data-aos="fade" data-aos-duration="2500" data-aos-offset="300">Administrare</strong>
+                        </h1>
+                        <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                        margin-right: auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="collumn-all-items" style="margin: -430px auto 200px;">
+            <div class="first-table" style="max-width: 780px; margin: auto;">
+                <div class="row content">
+                    <h2 class="text-info fw-light mb-5"
+                    style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;"
+                        data-aos="fade" data-aos-duration="2500" data-aos-offset="300">
+                        EVENIMENTE</h2>
+                </div>
+                <div class="row-content">
+                    <button mat-raised-button class="button-action-green" type="button"
+                        style="max-width: 250px;margin: 15px" (click)="AddEvent()"> Adauga eveniment
+                    </button>
+                </div>
+                <div class="mat-elevation-z8">
+                    <div class="example-header" style="width: 780px;">
+                        <mat-form-field style="min-width: 200px;">
+                            <input matInput #filter (keyup)="applyFilter($any($event.target).value,'events')" placeholder="Filtru">
+                            <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
+                                (click)="filter.value=''; applyFilter('','events');">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <mat-paginator #paginatorEvents [pageSizeOptions]="[5,10,25,50,100]" style="width: 780px;"></mat-paginator>
+                    <mat-table [dataSource]="dataSourceEvents">
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef> NUME </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="type">
+                            <mat-header-cell *matHeaderCellDef> TIP </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.tip}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="location">
+                            <mat-header-cell *matHeaderCellDef> LOCATIE </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.location}}</mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumnsEvents; sticky: true"></mat-header-row>
+                        <mat-row class="event-row" *matRowDef="let row; columns: displayedColumnsEvents;"
+                            (click)="goToEvent(row)">
+                        </mat-row>
+                    </mat-table>
+                </div>
+            </div>
+            <div class="row content">
+                <h2 class="text-info fw-light mb-5"
+                style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;"
+                    data-aos="fade" data-aos-duration="2500" data-aos-offset="300">
+                    PROFILE</h2>
+            </div>
+            <div class="mat-elevation-z8">
+                <div class="example-header">
+                    <mat-form-field style="min-width: 200px;">
+                        <input matInput #filter (keyup)="applyFilter($any($event.target).value,'profiles')" placeholder="Filtru">
+                        <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
+                            (click)="filter.value=''; applyFilter('','profiles');">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <mat-paginator #paginator [pageSizeOptions]="[5,10,25,50,100]" style="width: 1350px;"></mat-paginator>
+                <mat-table [dataSource]="dataSourceProfiles">
+                    <ng-container matColumnDef="nume">
+                        <mat-header-cell *matHeaderCellDef> NUME </mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.nume}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="prenume">
+                        <mat-header-cell *matHeaderCellDef> PRENUME </mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.prenume}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="cnp">
+                        <mat-header-cell *matHeaderCellDef> CNP </mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.cnp}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef> ACTIUNI </mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i=index">
+                          <div class="inline-content">
+                            <!-- <button mat-raised-button color="success" type="button" class="ActionButtons" (click)=editMaterial(element.id)>Salvare</button> -->
+                            <a style="cursor: pointer;" href="{{element.poza_buletin}}" target="_self">
+                              <mat-icon style="color:black; font-size: 28px" matTooltip="Buletin">contacts icon</mat-icon>
+                            </a>
+                            <!-- <button mat-raised-button type="button" class="ActionButtons" (click)="Anulare()">Anulare</button> -->
+                          </div>
+                        </mat-cell>
+                      </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumnsProfiles; sticky: true"></mat-header-row>
+                    <mat-row class="profile-row" *matRowDef="let row; columns: displayedColumnsProfiles;">
+                    </mat-row>
+                </mat-table>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>

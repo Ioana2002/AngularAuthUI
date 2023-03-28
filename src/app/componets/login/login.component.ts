@@ -10,13 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   type: string = "password";
   isText: boolean = false;
   eyeIcon: string = "fa fa-eye-slash";
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private service:AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit{
       password: ['', Validators.required]
     })
 
-     // if(localStorage.getItem('token') != null)
+    // if(localStorage.getItem('token') != null)
     // this.router.navigateByUrl('/home')
-    
+
   }
 
   hideShowPass() {
@@ -35,82 +35,67 @@ export class LoginComponent implements OnInit{
     this.isText ? this.type = "text" : this.type = "password";
   }
 
-  onLogin(){
-    if(this.loginForm.valid){
+  onLogin() {
+    if (this.loginForm.valid) {
 
       var body =
       {
-        Username : this.loginForm.get("username")?.value,
-        Password : this.loginForm.get("password")?.value
-       // Email : "Test"
+        Username: this.loginForm.get("username")?.value,
+        Password: this.loginForm.get("password")?.value
+        // Email : "Test"
       }
 
       console.log(this.loginForm.value)
       //Send the object to database
       this.service.login(this.loginForm.value)
-      // .subscribe(
-      //   (res:any)=>{
-      //    localStorage.setItem('token', res.token);
-      //    localStorage.setItem('role', res.role);
-      //    //this.router.navigateByUrl('/home');
-         
-      //   },
-      //   err=>{
-      //     if(err.status == 400)
-      //     console.log(err);
-      //       }
-        
-      // );
-      .subscribe(
-        (res: any) => {
-          localStorage.setItem('token', res.token);
-          localStorage.setItem('roles', res.role);
-          this.service.getUserProfile().subscribe(
-            (response: any) => {
-              if (response != null) {
-                localStorage.setItem('profile', JSON.stringify(response.profile));
-              }
-              this.service.getProfilePicture().subscribe(
-                (resp: any) => {
-                  if (resp != null) {
-                    localStorage.setItem('profile_picture', resp.picture_url);
-                  }
-                  this.service.getAccountInfo().subscribe(
-                    (aResp: any) => {
-                      localStorage.setItem('account_info', JSON.stringify(aResp));
-                      this.router.navigateByUrl('user/profile');
-                    },
-                    (err) => {
-                      console.log(err);
-                    }
-                  );
-                },
-                (err) => {
-                  console.log(err);
+        // .subscribe(
+        //   (res:any)=>{
+        //    localStorage.setItem('token', res.token);
+        //    localStorage.setItem('role', res.role);
+        //    //this.router.navigateByUrl('/home');
+
+        //   },
+        //   err=>{
+        //     if(err.status == 400)
+        //     console.log(err);
+        //       }
+
+        // );
+        .subscribe(
+          (res: any) => {
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('roles', res.role);
+            this.service.getUserProfile().subscribe({
+              next: (response: any) => {
+                if (response != null) {
+                  localStorage.setItem('profile', JSON.stringify(response.profile));
                 }
-              );
-            },
-            (err) => {
-              console.log(err);
+                this.service.getProfilePicture().subscribe(
+                  (resp: any) => {
+                    if (resp != null) {
+                      localStorage.setItem('profile_picture', resp.picture_url);
+                    }
+                    this.service.getAccountInfo().subscribe({
+                      next: (aResp: any) => {
+                        localStorage.setItem('account_info', JSON.stringify(aResp))
+                        this.router.navigateByUrl('user/profile')
+                      },
+                      error: (error: any) => console.log(error)
+                    }
+                    );
+                  }
+                );
+              },
+              error: (error: any) => console.log(error)
             }
-          );
-        },
-        (err) => {
-          // console.log(err.error.message)
-          // if (err.status == 400)
-          //   this.toastr.error(
-          //     'Incorrect username or password.',
-          //     'Authentication failed.'
-          //   );
-          if(err.status == 400)
-             console.log(err);
-        }
-      );
+            );
+          }
+        );
 
 
-    }else{
+    } else {
 
-     
+
       //throw the error using toaster and with required field
       ValidateForm.validateAllFormFields(this.loginForm);
       alert("Your form is invalid")

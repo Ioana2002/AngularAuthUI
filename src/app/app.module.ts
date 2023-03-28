@@ -21,38 +21,38 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componets/login/login.component';
 import { SignupComponent } from './componets/signup/signup.component';
-import { DashboardComponent } from './componets/dashboard/dashboard.component';
+
 import { AuthService } from './services/auth.service';
 import { environment } from 'src/environments/environment';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './componets/home/home.component';
 import { NavigationBarComponent } from './componets/page-components/navigation-bar/navigation-bar.component';
-import { AdminPanelComponent } from './componets/admin-panel/admin-panel.component';
+
 import { FooterComponent } from './componets/page-components/footer/footer.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { DatePipe } from '@angular/common';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/excursii-general.component';
+import { AdministrationGeneralComponent } from './administration/administration-general/administration-general.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent,
     HomeComponent,
     NavigationBarComponent,
-    AdminPanelComponent,
     FooterComponent,
     ProfileComponent,
-    ExcursiiGeneralComponent
+    ExcursiiGeneralComponent,
+    AdministrationGeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +79,8 @@ import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/
     MatTableModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule
   ],
   providers: [AuthService, DatePipe,{
     provide: HTTP_INTERCEPTORS,

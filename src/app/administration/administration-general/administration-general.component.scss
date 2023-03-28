@@ -1,0 +1,117 @@
+.first-section {
+    background: #afd49e52;
+    padding: 0px;
+    height: 700px;
+}
+
+.container-fluid{
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.column-all-itmes {
+    max-width: 1350px;
+    margin: auto;
+    margin-top: -430px;
+    margin-bottom: 200px;
+}
+
+.example-header {
+    padding: 8px 24px 0;
+    background-color: white;
+    text-align:center;
+    width: 1350px;
+}
+
+@media (max-width: 750px) {
+    .column-all-itmes {
+        max-width: 1000px;
+        margin: auto;
+        margin-top: -200px;
+    }
+
+    .first-section {
+        background: #27292a;
+        padding: 0px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 418px) {
+    .column-all-itmes {
+        max-width: 1000px;
+        margin: auto;
+        margin-top: -150px;
+    }
+}
+
+::ng-deep .mat-elevation-z8 {
+    overflow-x: auto;
+    //margin-top: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+::ng-deep .mat-header-cell {
+    font-family: "Chaney Wide", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    min-width: 190px;
+    max-width: 190px;
+}
+
+
+.mat-row:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+.mat-header-row {
+    border-bottom-color: var(--bs-danger);
+}
+
+::ng-deep .mat-cell {
+    //border-right: 1px solid #0000001f;
+    justify-content: center;
+    text-align: center;
+    min-width: 190px;
+    max-width: 190px;
+}
+
+.row.content {
+    margin-top: 100px;
+}
+
+.mat-row {
+    min-width: max-content;
+}
+
+.mat-row.event-row:hover {
+    cursor: pointer;
+    background-color: #aaa4a4cf;
+}
+
+.mat-header-row {
+    min-width: max-content;
+}
+
+.valid-tehnic:parent(.mat-cell){
+    background: green;
+}
+
+.row-content{
+    text-align: right;
+    padding: 5px 0px;
+}
+
+// .button-action-green{
+//     background: rgb(47, 190, 47);
+//     color:white
+// }

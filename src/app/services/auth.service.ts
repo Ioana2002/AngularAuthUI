@@ -42,11 +42,11 @@ export class AuthService {
   }
 
   login(loginObj:any){
-    return this.http.post<any>(`${this.baseUrl}/ApplicationUser/Login`, loginObj);
+    return this.http.post(`${this.baseUrl}/ApplicationUser/Login`, loginObj);
   }
 
   getUserProfile() {
-    return this.http.get(this.baseUrl + '/Profile/GetUserProfile');
+    return this.http.get<any>(this.baseUrl + '/Profile/GetUserProfile');
   }
   getAllProfiles() {
     return this.http.get(this.baseUrl + '/Profile/GetProfiles');
@@ -84,6 +84,10 @@ export class AuthService {
   }
   resetPassword(formData: any) {
     return this.http.post(this.baseUrl + '/Password/ResetPassword', formData)
+  }
+
+  getEvents() {
+    return this.http.get(this.baseUrl + '/Utile/GetEvents');
   }
 
   /*roleMatch(allowedRoles): boolean {

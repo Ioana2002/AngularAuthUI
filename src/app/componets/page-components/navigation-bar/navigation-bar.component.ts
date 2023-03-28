@@ -10,12 +10,20 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavigationBarComponent {
   
   authenticated: boolean = false;
+  administrator: boolean = false;
 
   constructor(private router: Router, private service: AuthService) { }
 
   ngOnInit(): void {
     if (localStorage.getItem("token") != null) {
       this.authenticated = true;
+    }
+    var roles:string | null = localStorage.getItem("roles");
+    if (roles?.includes('Admin')) {
+      if(this.authenticated)
+      {
+        this.administrator = true;
+      }
     }
   }
 

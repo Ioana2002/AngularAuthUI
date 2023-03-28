@@ -17,17 +17,17 @@ export class HomeComponent {
   constructor(private router: Router, private service: AuthService) { }
 
   ngOnInit(){
-    // if(localStorage.getItem('token') != null || localStorage.getItem('token') != undefined)
-    // {
-    // this.service.getUserProfile().subscribe(
-    //   res => {
-    //     this.userDetails = res;
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // )
-    // }
+    if(localStorage.getItem('token') != null || localStorage.getItem('token') != undefined)
+    {
+    this.service.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+    }
   }
 
 }

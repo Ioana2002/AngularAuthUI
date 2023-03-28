@@ -4,7 +4,7 @@
         <section style="padding: 0px 0px 0px 0px;" >
             <div class="text-center profile-card" style="margin: 0px;background-color: #ffffff; padding-bottom: 20px;">
                 <div class="profile-card-img"
-                    style="height: 260px;background: linear-gradient(180deg, green 0%, white 100%), var(--bs-gray-800);color: rgb(33, 37, 41);">
+                    style="height: 260px;background: linear-gradient(180deg, #96b496 0%, white 100%), var(--bs-gray-800);color: rgb(33, 37, 41);">
                 </div>
                 <input type="file" class="file-input" (change)="updateProfilePicture($event)" #ProfilePictureUpload>
                 <img class="change-profile-picture-button"
@@ -13,7 +13,7 @@
                     matTooltip="Schimba poza de profil" matTooltipClass="example-tooltip-red">
                 <div style="margin: 0px;margin-top: -40px;">
                     <img class="rounded-circle"
-                        style="background-image: url({{this.ProfilePicture.value}}); margin-top: -70px;height: 225px;border: 7px solid #26b94b; width: 225px;background-position:center;background-size: cover">
+                        style="background-image: url({{this.ProfilePicture.value}}); margin-top: -70px;height: 225px;border: 7px solid #019014; width: 225px;background-position:center;background-size: cover">
                     <div class="row">
                         <div class="col" style="padding-right: 0px;padding-left: 4px;">
                             <h3
@@ -43,7 +43,7 @@
                         <mat-tab label="Profil" >
                             <div class="row tab-content">
                                 <div class="col content">
-                                    <form [formGroup]="profileModel" class="column-all-itmes"  style="background-color: #26b94b2a;border-color: #26b94b;">
+                                    <form [formGroup]="profileModel" class="column-all-itmes"  style="background-color: #c3c3c32a;border-color: #26b94b;">
                                         <div class="row content">
                                             <h2 class="text-info fw-light mb-5"
                                                 style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
