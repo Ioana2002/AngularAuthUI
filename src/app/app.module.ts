@@ -41,6 +41,8 @@ import { DatePipe } from '@angular/common';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/excursii-general.component';
 import { AdministrationGeneralComponent } from './administration/administration-general/administration-general.component';
+import { EvenimentAddComponent } from './eveniment/eveniment-add/eveniment-add.component';
+import { StergereEvenimentComponent } from './eveniment/stergere-eveniment/stergere-eveniment.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { AdministrationGeneralComponent } from './administration/administration-
     FooterComponent,
     ProfileComponent,
     ExcursiiGeneralComponent,
-    AdministrationGeneralComponent
+    AdministrationGeneralComponent,
+    EvenimentAddComponent,
+    StergereEvenimentComponent
   ],
   imports: [
     BrowserModule,

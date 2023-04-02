@@ -1,0 +1,149 @@
+<body>
+    <navigation-bar></navigation-bar>
+    <div class="container-fluid">
+        <section class="first-section">
+            <div class="container">
+                <div class="row" style="padding-top: 180px; text-align: center;">
+                    <div class="col-lg-10 mx-auto">
+                        <h1 class="text-uppercase"
+                            style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                            <strong data-aos="fade" data-aos-duration="2500" data-aos-offset="300">Eveniment</strong>
+                        </h1>
+                        <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                        margin-right: auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row">
+            <div class="col content">
+                <form [formGroup]="eventModel" class="column-all-itmes">
+                    <div class="row content">
+                        <h2 class="text-info fw-light mb-5"
+                            style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 0.5rem !important;"
+                            data-aos="fade" data-aos-duration="2500" data-aos-offset="300">
+                            Informații eveniment</h2>
+                            <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                            margin-right: auto;">
+                    </div>
+                    <div class="row content">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Denumire</mat-label>
+                            <input matInput placeholder="Denumire" type="text" formControlName="Denumire" required>
+                            <mat-error *ngIf="eventModel.get('Denumire')!.hasError('required')"
+                                class="warning-massage-field">
+                                Campul este obligatoriu
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Locația</mat-label>
+                            <input matInput placeholder="Locația" type="text" formControlName="Locatia" required>
+                            <mat-error *ngIf="eventModel.get('Locatia')!.hasError('required')"
+                                class="warning-massage-field">
+                                Campul este obligatoriu
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row content">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Dată Început</mat-label>
+                            <input matInput [matDatepicker]="picker1" formControlName="DataInceput" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker1">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Dată Sfârșit</mat-label>
+                            <input matInput [matDatepicker]="picker2" formControlName="DataSfarsit" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker2">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Județ</mat-label>
+                            <input matInput placeholder="Județ" type="text" formControlName="Judet" required>
+                            <mat-error *ngIf="eventModel.get('Judet')!.hasError('required')"
+                                class="warning-massage-field">
+                                Campul este obligatoriu
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row content">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Tip Eveniment</mat-label>
+                            <mat-select formControlName="Tip" required>
+                                <mat-option *ngFor="let tip of this.tipEveniment" [value]="tip.value">
+                                    {{tip.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="eventModel.get('Tip')!.hasError('required')" class="warning-massage-field">
+                                Campul este obligatoriu
+                            </mat-error>
+                        </mat-form-field>
+                        <div *ngIf="this.StatusPoster.value == 'Va rugam incarcati un poster'"
+                            style="max-width: 270px;">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Status Poster</mat-label>
+                                <input matInput [formControl]="StatusPoster" style="color: red;" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="this.StatusPoster.value != 'Va rugam incarcati un poster'"
+                            style="max-width: 270px;">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Status Poster</mat-label>
+                                <input matInput [formControl]="StatusPoster" style="color: green" readonly>
+                            </mat-form-field>
+                        </div>
+                        <input type="file" class="file-input" (change)=" uploadPoster($event)" #fileUploadPoster>
+                        <div class="file-upload">
+                            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUploadPoster.click()"
+                                style="margin-right: 10px;">
+                                <mat-icon>attach_file</mat-icon>
+                            </button>{{fileNamePoster || "Press to add poster"}}
+                        </div>
+                    </div>
+                    <div class="row content">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Oră</mat-label>
+                            <input matInput type="time" formControlName="OraStart" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="row content">
+                        <mat-form-field style=" width: 100%; max-width: 810px;">
+                            <mat-label>Descriere eveniment</mat-label>
+                            <textarea style="min-height: 100px;" matInput formControlName="Descriere"
+                                placeholder="Vă rugăm să introduceți aici descrierea evenimentului."
+                                required></textarea>
+                            <mat-error *ngIf="eventModel.get('Descriere')!.hasError('required')"
+                                class="warning-massage-field">
+                                Campul este obligatoriu
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="row content" style="margin-top: 20px;">
+                        <!-- <button mat-raised-button class="button-action" type="button" *ngIf="showEmailButton" (click)="SendFeedback()"
+                            style="max-width: 250px; margin: 15px;background: var(--bs-gray-800); color: white;">Trimite formulare pe email</button> -->
+                        <button mat-raised-button class="button-action" type="button" (click)="StergereEveniment()"
+                            style="max-width: 250px; margin: 15px;background: #019014; color: white;">Stergere eveniment</button>
+                        <!-- <button mat-raised-button class="button-action" type="button" *ngIf="showFeedbackDownloadButton" (click)="downloadFeedbacksExcel()"
+                            style="max-width: 250px; margin: 15px;background: white; color: var(--bs-gray-800);"><img src="https://img.icons8.com/color/24/000000/ms-excel.png"/> Descarca feedback-uri</button> -->
+                    </div>
+                    <br>
+                    <div class="row content">
+                        <img src="{{this.eventModel.get('Poster')!.value}}" class="responsive-image">
+                    </div>
+                    <div class="row content" style="margin-top: 20px;">
+                        <button mat-raised-button class="button-action" type="button"
+                            style="max-width: 250px; margin: 15px;background: var(--bs-gray-800); color: white;">Back</button>
+                        <button mat-raised-button class="button-action" type="button"
+                            style="max-width: 250px;margin: 15px" (click)="AddEvent()">Save Changes</button>
+                    </div>
+                    <br>
+                    <div class="warning-massage">
+                        Toate campurile marcate cu ( * ) sunt obligatorii</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

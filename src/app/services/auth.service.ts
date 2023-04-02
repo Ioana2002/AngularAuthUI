@@ -87,7 +87,22 @@ export class AuthService {
   }
 
   getEvents() {
-    return this.http.get(this.baseUrl + '/Utile/GetEvents');
+    return this.http.get(this.baseUrl + '/Eveniment/GetEvents');
+  }
+
+  getEvent(id: string) {
+    return this.http.get(this.baseUrl + '/Eveniment/GetEvent/' + id);
+  }
+
+  deleteEvent(id:string){
+    return this.http.delete(this.baseUrl + '/Eveniment/DeleteEvent/' + id);
+  }
+
+  uploadEvent(formData: any) {
+    return this.http.post(
+      this.baseUrl + '/Eveniment/UploadEvent',
+      formData
+    );
   }
 
   /*roleMatch(allowedRoles): boolean {
