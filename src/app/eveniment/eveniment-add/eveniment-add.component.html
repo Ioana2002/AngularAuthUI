@@ -105,7 +105,7 @@
                     <div class="row content">
                         <mat-form-field class="example-full-width">
                             <mat-label>Oră</mat-label>
-                            <input matInput type="time" formControlName="OraStart" required>
+                            <input matInput type="time" formControlName="Ora" required>
                         </mat-form-field>
                     </div>
                     <div class="row content">
@@ -135,7 +135,7 @@
                     </div>
                     <div class="row content" style="margin-top: 20px;">
                         <button mat-raised-button class="button-action" type="button"
-                            style="max-width: 250px; margin: 15px;background: var(--bs-gray-800); color: white;">Back</button>
+                            style="max-width: 250px; margin: 15px;background: var(--bs-gray-800); color: white;" (click) = "GoBack()">Back</button>
                         <button mat-raised-button class="button-action" type="button"
                             style="max-width: 250px;margin: 15px" (click)="AddEvent()">Save Changes</button>
                     </div>

@@ -43,6 +43,7 @@ import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/
 import { AdministrationGeneralComponent } from './administration/administration-general/administration-general.component';
 import { EvenimentAddComponent } from './eveniment/eveniment-add/eveniment-add.component';
 import { StergereEvenimentComponent } from './eveniment/stergere-eveniment/stergere-eveniment.component';
+import { EvenimentComponent } from './eveniment/eveniment.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { StergereEvenimentComponent } from './eveniment/stergere-eveniment/sterg
     ExcursiiGeneralComponent,
     AdministrationGeneralComponent,
     EvenimentAddComponent,
-    StergereEvenimentComponent
+    StergereEvenimentComponent,
+    EvenimentComponent
   ],
   imports: [
     BrowserModule,

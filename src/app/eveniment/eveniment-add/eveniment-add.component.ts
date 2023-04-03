@@ -155,7 +155,7 @@ export class EvenimentAddComponent implements OnInit{
         Descriere: this.eventModel.get('Descriere')?.value,
         TipEveniment: this.eventModel.get('Tip')?.value,
         Poster: this.eventModel.get('Poster')?.value,
-        Ora: this.eventModel.get('OraStart')?.value,
+        Ora: this.eventModel.get('Ora')?.value,
         EvenimentId: this.id
       };
 
@@ -176,6 +176,10 @@ export class EvenimentAddComponent implements OnInit{
           // });
         })
     }
+  }
+
+  GoBack() {
+    this.router.navigate(['/administration'])
   }
 
 }
