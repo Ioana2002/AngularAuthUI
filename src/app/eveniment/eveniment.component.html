@@ -1,1 +1,88 @@
-<p>eveniment works!</p>
+<body>
+    <navigation-bar></navigation-bar>
+    <div class="container-fluid">
+        <section class="first-section">
+            <div class="container">
+                <div class="row" style="padding-top: 180px; text-align: center;">
+                    <div class="col-lg-10 mx-auto">
+                        <h1 class="text-uppercase"
+                        style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                            <strong data-aos="fade" data-aos-duration="2500"
+                                data-aos-offset="300">{{this.eveniment.denumire}}</strong>
+                        </h1>
+                        <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                        margin-right: auto;">
+                        <span
+                            style="color: rgb(34, 119, 0); font-size: 19px;font-weight: 500;letter-spacing: 3px;"
+                            data-aos="fade" data-aos-duration="2500"
+                            data-aos-offset="300">{{eveniment.tipEveniment}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="padding: 0px;">
+            <div class="container">
+                <div class="row" style="margin-top: 130px; text-align: center;">
+                    <div class="col-lg-12">
+                        <img src="{{this.eveniment.poster}}" class="responsive-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="padding: 1rem 0;">
+            <div class="container">
+                <div class="row" style="margin-top: 10px; text-align: center;">
+                    <div class="col-lg-6">
+                        <span style="color: rgb(0, 0, 0);font-family:Poppins, sans-serif;letter-spacing: 2px;">Dată început
+                            {{this.eveniment.data_Inceput}} </span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span style="color: rgb(0, 0, 0);font-family:Poppins, sans-serif;letter-spacing: 2px;">Dată sfârșit
+                            {{this.eveniment.data_Sfarsit}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="padding:20px;background:#5db841b4; margin-top: 50px;">
+            <div class="row" style="text-align: center; justify-content: center;">
+                <button mat-raised-button type="button" *ngIf="this.allowRegister == true" class="action-button"
+                    (click)="GoToRegister()">
+                    <mat-icon>create</mat-icon> Inscriere
+                </button>
+                <button mat-raised-button type="button" class="action-button" (click)="GoToParticipants()">
+                    <mat-icon>perm_identity</mat-icon> Participanti
+                </button>
+            </div>
+        </section>
+        <div class="row tab-content">
+            <div class="col content">
+                <div class="column-all-itmes">
+                    <div class="row content">
+                        <h2 class="text-info fw-light mb-5"
+                            style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 0.5rem !important;"
+                            data-aos="fade" data-aos-duration="2500" data-aos-offset="300">
+                            Descriere eveniment</h2>
+                            <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                            margin-right: auto;">
+                    </div>
+                    <div style="overflow-wrap: break-word;" data-aos="zoom-in" data-aos-duration="1500" [innerHTML]="this.eveniment.descriere">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section style="padding: 1rem 0;">
+            <div class="container">
+                <div class="row" style="margin-top: 10px; margin-bottom: 100px; text-align: center;">
+                    <div class="col-lg-4">
+                        <span class="bottom-details"  style="color: black;">LOC DESFĂȘURARE <br> <strong
+                                class="bottom-details-text"  style="color: black;">{{this.eveniment.locatia}}</strong></span>
+                    </div>
+                    <div class="col-lg-4">
+                        <span class="bottom-details"  style="color: black;">DETALII <br> <strong class="bottom-details-text"  style="color: black;">Oră: {{this.eveniment.ora}}</strong><br></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <app-footer></app-footer>
+</body>

@@ -11,6 +11,10 @@ export class NavigationBarComponent {
   
   authenticated: boolean = false;
   administrator: boolean = false;
+  admin: boolean = false;
+  excursii: { value: string, name: string, tip: string, locatie:string }[] = [];
+  activitati: { value: string, name: string, tip: string, locatie:string }[] = [];
+  cazuri: { value:string, name: string, tip:string, locatie:string }[] = [];
 
   constructor(private router: Router, private service: AuthService) { }
 
@@ -25,6 +29,23 @@ export class NavigationBarComponent {
         this.administrator = true;
       }
     }
+
+    this.service.getEvents().subscribe((response: any) => {
+      for (var event of response) {
+        if (event.tip == "Excursie") {
+          this.excursii.push(event);
+        }
+        if (event.tip == "Activitate") {
+          this.activitati.push(event)
+        }
+        if(event.tip == "Caz Social")
+        {
+          this.cazuri.push(event)
+        }
+      }
+    }, (err) => {
+      console.log(err);
+    })
   }
 
   Logout() {
@@ -35,6 +56,10 @@ export class NavigationBarComponent {
     localStorage.removeItem('roles');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+  }
+
+  openEvent(data: any) {
+    this.router.navigate(['/event', data.value]);
   }
 
 }

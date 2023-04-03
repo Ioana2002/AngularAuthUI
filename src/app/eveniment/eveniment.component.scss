@@ -1,0 +1,121 @@
+.responsive-image {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: -500px;
+}
+
+// ::ng-deep .mat-raised-button:hover {
+//     color: var(--bs-grey-900) !important;
+//     background: white !important;
+// }
+
+// ::ng-deep .mat-raised-button {
+//     color: white !important;
+//     background: var(--bs-danger) !important;
+// }
+
+.action-button {
+    width: 150px;
+    margin: 10px 30px 10px 10px;
+    color: var(--bs-grey-900) !important;
+    background: white !important;
+}
+
+.action-button:hover {
+    width: 150px;
+    margin: 10px 30px 10px 10px;
+    color: white !important;
+    background: var(--bs-danger) !important;
+}
+
+div.row.content {
+    justify-content: center;
+    padding: 5px 0px;
+    margin-bottom: 30px;
+}
+
+div.row.content.mt-40 {
+    margin-top: 40px;
+}
+
+div.col.content {
+    max-width: 80% !important;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.column-all-itmes {
+    background: white;
+    padding: 40px 35px;
+    max-width: 1150px;
+    //border-radius: 15px;
+    margin: auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.first-section {
+    background: #afd49e52;
+    padding: 0px;
+    height: 700px;
+}
+
+@media (max-width: 1200px) {
+    .responsive-image {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        border-radius: 10px;
+        margin-top: -450px;
+    }
+}
+
+@media (max-width: 750px) {
+    .responsive-image {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        border-radius: 10px;
+        margin-top: -250px;
+    }
+
+    .first-section {
+        background: #27292a;
+        padding: 0px;
+        height: 550px;
+    }
+}
+
+@media (max-width: 418px) {
+    .responsive-image {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        border-radius: 10px;
+        margin-top: -300px;
+    }
+
+    .first-section {
+        background: #27292a;
+        padding: 0px;
+        height: 600px;
+    }
+}
+
+.bottom-details {
+    color: white;
+    letter-spacing: 2px;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.bottom-details-text {
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.col-lg-4{
+    margin-top: 15px;
+}

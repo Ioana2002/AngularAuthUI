@@ -25,9 +25,24 @@
             <ul class="navbar-nav ms-auto" style="align-items: center;">
                 <li class="nav-item"><a class="nav-link" routerLink="/home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="services.html">Despre noi</a></li>
-                <li class="nav-item"><a class="nav-link" href="projects.html">Cazuri sociale</a></li>
-                <li class="nav-item"><a class="nav-link" href="pricing.html">Activitati</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/excursii">Excursii</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Cazuri sociale</a>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" 
+                                    *ngFor ="let caz of cazuri" role="button" (click)="openEvent(caz)">{{caz.name}}</a>
+                    </div>
+            </li>
+            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Activitati</a>
+                <div class="dropdown-menu">
+                        <a class="dropdown-item" 
+                                *ngFor ="let activitate of activitati" role="button" (click)="openEvent(activitate)">{{activitate.name}}</a>
+                </div>
+        </li>
+        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Excursii</a>
+            <div class="dropdown-menu">
+                    <a class="dropdown-item" 
+                            *ngFor ="let excursie of excursii" role="button" (click)="openEvent(excursie)">{{excursie.name}}</a>
+            </div>
+    </li>
                 <li class="nav-item" *ngIf="authenticated"><a class="nav-link" routerLink="/user/profile">Profil</a>
                 </li>
                 <li class="nav-item dropdown" *ngIf="administrator">

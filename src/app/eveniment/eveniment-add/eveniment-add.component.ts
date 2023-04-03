@@ -39,7 +39,7 @@ export class EvenimentAddComponent implements OnInit{
 
     tipEveniment = [
       { value: "Excursie", name: "Excursie" },
-      { value: "CazSocial", name: "Caz Social" },
+      { value: "Caz Social", name: "Caz Social" },
       { value: "Activitate", name: "Activitate" }]
 
       posterFile: any = null;
@@ -165,7 +165,7 @@ export class EvenimentAddComponent implements OnInit{
           //   timeOut: 4000,
           //   extendedTimeOut: 0,
           // });
-          this.router.navigate(['home']);
+          this.router.navigate(['administration']);
         }
       },
         (err: any) => {
