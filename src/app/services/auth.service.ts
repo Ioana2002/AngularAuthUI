@@ -105,6 +105,28 @@ export class AuthService {
     );
   }
 
+  getProfiles() {
+    return this.http.get(this.baseUrl + '/Eveniment/GetParticipants');
+  }
+
+  registerToEvent(formData: any) {
+    return this.http.post(this.baseUrl + '/Eveniment/AddRegister', formData);
+  }
+
+  getInscriere(eventid: string) {
+    return this.http.get(this.baseUrl + '/Eveniment/GetInscriere/' + eventid);
+  }
+
+  deleteParticipation(id:string){
+    return this.http.get(this.baseUrl + '/Eveniment/DeleteParticipation/' + id);
+  }
+
+  getEventParticipants(id: string) {
+    return this.http.get(this.baseUrl + '/Eveniment/GetEventParticipants/' + id);
+  }
+
+
+
   /*roleMatch(allowedRoles): boolean {
     var isMatch = false;
     var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));

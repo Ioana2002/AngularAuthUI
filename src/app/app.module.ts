@@ -44,6 +44,9 @@ import { AdministrationGeneralComponent } from './administration/administration-
 import { EvenimentAddComponent } from './eveniment/eveniment-add/eveniment-add.component';
 import { StergereEvenimentComponent } from './eveniment/stergere-eveniment/stergere-eveniment.component';
 import { EvenimentComponent } from './eveniment/eveniment.component';
+import { EvenimentInscriereComponent } from './eveniment/eveniment-inscriere/eveniment-inscriere.component';
+import { EvenimentParticipantiComponent } from './eveniment/eveniment-participanti/eveniment-participanti.component';
+import { StergeParticipareEvenimentComponent } from './eveniment/sterge-participare-eveniment/sterge-participare-eveniment.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { EvenimentComponent } from './eveniment/eveniment.component';
     AdministrationGeneralComponent,
     EvenimentAddComponent,
     StergereEvenimentComponent,
-    EvenimentComponent
+    EvenimentComponent,
+    EvenimentInscriereComponent,
+    EvenimentParticipantiComponent,
+    StergeParticipareEvenimentComponent
   ],
   imports: [
     BrowserModule,

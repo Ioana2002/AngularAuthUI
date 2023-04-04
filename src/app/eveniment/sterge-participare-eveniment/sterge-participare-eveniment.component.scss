@@ -1,0 +1,21 @@
+.action-buttons {
+    padding: 10px 0px;
+    text-align: right;
+}
+
+h2 {
+    margin-top: 0px;
+}
+
+.button-action:hover{
+    color: white !important;
+    background: var(--bs-danger) !important;
+}
+
+.button-action{
+    width: 100px; 
+    margin-right: 15px;
+    background: var(--bs-gray-800); color: white;
+}
+
+
