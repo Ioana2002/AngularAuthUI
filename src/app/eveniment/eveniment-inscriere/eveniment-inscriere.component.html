@@ -1,71 +1,9 @@
-<body>
-    <navigation-bar></navigation-bar>
-    <div class="container-fluid">
-        <section class="first-section">
-            <div class="container">
-                <div class="row" style="padding-top: 180px; text-align: center;">
-                    <div class="col-lg-10 mx-auto">
-                        <h1 class="text-uppercase"
-                        style="color: white; font-size: 32px;font-family: 'Poppins';letter-spacing: 10px;">
-                            <strong data-aos="fade" data-aos-duration="2500" data-aos-offset="300">{{this.eveniment.denumire}}</strong>
-                        </h1>
-                        <hr
-                            style="background: var(--bs-danger);color: var(--bs-danger);border-color: var(--bs-danger); max-width: 200px; margin-top: 10px; margin-bottom: 5px;">
-                        <span
-                            style="color: whitesmoke; font-size: 19px;font-weight: 500;font-family:Poppins, sans-serif; letter-spacing: 3px;"
-                            data-aos="fade" data-aos-duration="2500" data-aos-offset="300">{{this.eveniment.tipEveniment}}</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="row">
-            <div class="col content">
-                <form [formGroup]="registerModel" class="column-all-itmes">
-                    <div class="row content">
-                        <h2 class="text-info fw-light mb-5"
-                            style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 0.5rem !important;">
-                            Înscriere</h2>
-                        <hr class="light my-4"
-                            style="border-color: var(--bs-danger); max-width: 150px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;">
-                    </div>
-                    <div class="row content" *ngIf="this.participareId == ''">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Nume Participant</mat-label>
-                            <input type="text" matInput formControlName="GuidParticipant" [matAutocomplete]="autoParticipant" required>
-                            <mat-autocomplete #autoParticipant="matAutocomplete" [displayWith]="displayFn">
-                              <mat-option *ngFor="let option of filteredParticipants | async" [value]="option">
-                                {{option.name}}
-                              </mat-option>
-                            </mat-autocomplete>
-                            <mat-error *ngIf="registerModel.get('GuidParticipant')!.hasError('required')"
-                            class="warning-massage-field">
-                            Campul este obligatoriu
-                        </mat-error>
-                        </mat-form-field>   
-                    </div>
-                    <div class="row content" *ngIf="this.participareId != ''">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Nume Participant</mat-label>
-                            <input matInput formControlName="NumeParticipant" readonly>
-                        </mat-form-field>
-                    </div>
-                    <div class="row content">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Tip Taxă / Participant</mat-label>
-                            <input matInput formControlName="TipTaxa" readonly>
-                        </mat-form-field>
-                    </div>
-                    <div class="row content" style="margin-top: 20px;">
-                        <button mat-raised-button class="button-action" type="button" style="max-width: 250px; margin: 15px; background: var(--bs-gray-800); color: white;" (click)="GoToRegister()">Back</button>
-                        <button mat-raised-button class="button-action" *ngIf="visibleName" type="button" style="max-width: 250px;margin: 15px; background: var(--bs-danger); color: white;" (click)="DeleteRegister()">Șterge Înscriere</button>
-                        <button mat-raised-button class="button-action" *ngIf="this.participareId == ''" type="button" style="max-width: 250px;margin: 15px" (click)="RegisterToEvent()">Înscrie-te</button>
-                    </div>
-                    <br>
-                    <div class="warning-massage">
-                        Toate campurile marcate cu ( * ) sunt obligatorii</div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <app-footer></app-footer>
-</body>
+<h2>Inscriere eveniment</h2>
+Sigur doriti sa va inscrieti la aceast eveniment ?
+<br>
+
+<div class="action-buttons">
+    <br>
+    <button mat-raised-button type="button" class="button-action" color="primary" (click)="adaugaInscriere()">Da</button>&nbsp;
+    <button mat-raised-button type="button" class="button-action" style=" color: var(--bs-gray-800); background: white;" color="white" (click)="Renunta()">Nu</button>
+</div>

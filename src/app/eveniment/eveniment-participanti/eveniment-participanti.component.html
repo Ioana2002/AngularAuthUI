@@ -28,7 +28,7 @@
                         STANDARD <b style="color: var(--bs-danger);">A</b></h2>
                 </div>
                 <div class="mat-elevation-z8">
-                    <mat-table [dataSource]="this.dataSourceStdA">
+                    <mat-table [dataSource]="this.dataSource">
                         <ng-container matColumnDef="participant">
                             <mat-header-cell *matHeaderCellDef> Participant </mat-header-cell>
                             <mat-cell *matCellDef="let element">{{element.participantNume}}</mat-cell>

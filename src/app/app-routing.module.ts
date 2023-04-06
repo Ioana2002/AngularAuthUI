@@ -9,6 +9,7 @@ import { AdministrationGeneralComponent } from './administration/administration-
 import { EvenimentAddComponent } from './eveniment/eveniment-add/eveniment-add.component';
 import { EvenimentComponent } from './eveniment/eveniment.component';
 import { EvenimentInscriereComponent } from './eveniment/eveniment-inscriere/eveniment-inscriere.component';
+import { EvenimentParticipantiComponent } from './eveniment/eveniment-participanti/eveniment-participanti.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'event-add/:id', component:EvenimentAddComponent},
   {path:'event-add', component:EvenimentAddComponent},
   {path:'event/:id', component: EvenimentComponent},
-  {path:'event-register/:id', component: EvenimentInscriereComponent}
+  {path:'event-register/:id', component: EvenimentInscriereComponent},
+  {path:'event-participants/:id', component: EvenimentParticipantiComponent}
 ];
 
 @NgModule({

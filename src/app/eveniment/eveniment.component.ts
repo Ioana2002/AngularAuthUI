@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { EvenimentInscriereComponent } from './eveniment-inscriere/eveniment-inscriere.component';
+import { MatDialog } from '@angular/material/dialog';
 
 declare function download(url:any): any;
 
@@ -32,14 +34,19 @@ export class EvenimentComponent implements OnInit{
 
   allowRegister:boolean = false;
   allowValidation:boolean = false;
+  authenticated: boolean = false;
 
   constructor(private service: AuthService,
     private router: Router,
     public datePipe: DatePipe,
+    private dialog: MatDialog,
     private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
+    if (localStorage.getItem("token") != null) {
+      this.authenticated = true;
+    }
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id")
       this.service.getEvent(this.id).subscribe((response:any) =>{
@@ -63,9 +70,14 @@ export class EvenimentComponent implements OnInit{
 
   }
 
-  GoToRegister()
+  Register()
   {
-    this.router.navigate(['event-register', this.id])
+    const dialogRef = this.dialog.open(EvenimentInscriereComponent, {
+      width: "600px",
+      height: "225px",
+      panelClass: 'custom-container',
+      data: { id: this.id }
+    });
   }
 
   GoToParticipants()
