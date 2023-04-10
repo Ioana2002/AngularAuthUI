@@ -47,6 +47,9 @@ import { EvenimentComponent } from './eveniment/eveniment.component';
 import { EvenimentInscriereComponent } from './eveniment/eveniment-inscriere/eveniment-inscriere.component';
 import { EvenimentParticipantiComponent } from './eveniment/eveniment-participanti/eveniment-participanti.component';
 import { StergeParticipareEvenimentComponent } from './eveniment/sterge-participare-eveniment/sterge-participare-eveniment.component';
+import { AboutUsComponent } from './informations/about-us/about-us.component';
+import { GalleryComponent } from './informations/gallery/gallery.component';
+import { EventsCalendarComponent } from './informations/events-calendar/events-calendar.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { StergeParticipareEvenimentComponent } from './eveniment/sterge-particip
     EvenimentComponent,
     EvenimentInscriereComponent,
     EvenimentParticipantiComponent,
-    StergeParticipareEvenimentComponent
+    StergeParticipareEvenimentComponent,
+    AboutUsComponent,
+    GalleryComponent,
+    EventsCalendarComponent
   ],
   imports: [
     BrowserModule,

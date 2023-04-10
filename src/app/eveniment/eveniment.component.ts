@@ -35,6 +35,7 @@ export class EvenimentComponent implements OnInit{
   allowRegister:boolean = false;
   allowValidation:boolean = false;
   authenticated: boolean = false;
+  registered: boolean = false;
 
   constructor(private service: AuthService,
     private router: Router,
@@ -47,6 +48,9 @@ export class EvenimentComponent implements OnInit{
     if (localStorage.getItem("token") != null) {
       this.authenticated = true;
     }
+    // if (localStorage.getItem("ParticipareId") != null && localStorage.getItem("token") != null) {
+    //   this.registered = true;
+    // }
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id")
       this.service.getEvent(this.id).subscribe((response:any) =>{
@@ -67,6 +71,7 @@ export class EvenimentComponent implements OnInit{
 
       })
     })
+    
 
   }
 

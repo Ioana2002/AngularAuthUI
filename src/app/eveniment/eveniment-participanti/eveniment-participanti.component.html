@@ -6,32 +6,50 @@
                 <div class="row" style="padding-top: 180px; text-align: center;">
                     <div class="col-lg-10 mx-auto">
                         <h1 class="text-uppercase"
-                            style="color: white; font-size: 32px;font-family: 'Poppins';letter-spacing: 10px;">
+                        style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
                             <strong data-aos="fade" data-aos-duration="2500"
                                 data-aos-offset="300">{{this.eveniment.denumire}}</strong>
                         </h1>
-                        <hr
-                            style="background: var(--bs-danger);color: var(--bs-danger);border-color: var(--bs-danger); max-width: 200px; margin-top: 10px; margin-bottom: 5px;">
-                        <span
-                            style="color: whitesmoke; font-size: 19px;font-weight: 500;font-family:Poppins, sans-serif; letter-spacing: 3px;"
-                            data-aos="fade" data-aos-duration="2500"
-                            data-aos-offset="300">{{this.eveniment.tipEveniment}}</span>
+                        <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                        margin-right: auto;">
+                       <span
+                       style="color: rgb(34, 119, 0); font-size: 19px;font-weight: 500;letter-spacing: 3px;"
+                       data-aos="fade" data-aos-duration="2500"
+                       data-aos-offset="300">{{eveniment.tipEveniment}}</span>
                     </div>
                 </div>
             </div>
         </section>
         <div class="column-all-itmes" [ngStyle]="{ 'max-width': this.isAdmin ? '1070px' : '970px'}">
-            <div *ngIf="showStdA">
+            <div class="first-table" style="max-width: 780px; margin: auto;">
                 <div class="row content">
                     <h2 class="text-info fw-light mb-5"
-                        style="border-color: var(--bs-gray-800);color:whitesmoke !important; text-align:center; letter-spacing: 15px; font-weight: bold !important; margin-bottom: 0.5rem !important;font-family:Poppins, sans-serif;">
-                        STANDARD <b style="color: var(--bs-danger);">A</b></h2>
+                    style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;"
+                        data-aos="fade" data-aos-duration="2500" data-aos-offset="300">
+                        PARTICIPANTI</h2>
                 </div>
                 <div class="mat-elevation-z8">
-                    <mat-table [dataSource]="this.dataSource">
-                        <ng-container matColumnDef="participant">
-                            <mat-header-cell *matHeaderCellDef> Participant </mat-header-cell>
+                    <mat-paginator #paginatorEvents [pageSizeOptions]="[5,10,25,50,100]" style="width: 780px;"></mat-paginator>
+                    <mat-table [dataSource]="dataSourceParticipants">
+                        <ng-container matColumnDef="nume">
+                            <mat-header-cell *matHeaderCellDef> NUME </mat-header-cell>
                             <mat-cell *matCellDef="let element">{{element.participantNume}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="taxa">
+                            <mat-header-cell *matHeaderCellDef> TAXA </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.taxa}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="dataInscriere">
+                            <mat-header-cell *matHeaderCellDef> DATA INSCRIERE </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.dataInscriere}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="status">
+                            <mat-header-cell *matHeaderCellDef> STATUS </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.status}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="telefon">
+                            <mat-header-cell *matHeaderCellDef> TELEFON </mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.telefon}}</mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="actions">
                             <mat-header-cell *matHeaderCellDef style="min-width: 100px;max-width: 100px;"> ACTIUNI </mat-header-cell>
@@ -43,14 +61,14 @@
                               </div>
                             </mat-cell>
                           </ng-container>
-                    <div *ngIf="!this.isAdmin">
-                        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                    </div>
-                    <div *ngIf="this.isAdmin">
-                        <mat-header-row *matHeaderRowDef="displayedColumnsAdmin; sticky: true"></mat-header-row>
-                        <mat-row *matRowDef="let row; columns: displayedColumnsAdmin;"></mat-row>
-                    </div>
+                          <div *ngIf="!this.isAdmin">
+                            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </div>
+                        <div *ngIf="this.isAdmin">
+                            <mat-header-row *matHeaderRowDef="displayedColumnsAdmin; sticky: true"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumnsAdmin;"></mat-row>
+                        </div>
                     </mat-table>
                 </div>
             </div>

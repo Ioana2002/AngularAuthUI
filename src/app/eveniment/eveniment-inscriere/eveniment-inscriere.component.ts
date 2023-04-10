@@ -7,7 +7,7 @@ import { EvenimentComponent } from '../eveniment.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DialogData {
-  id: any;
+  id: string;
 }
 
 @Component({
@@ -24,8 +24,12 @@ export class EvenimentInscriereComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute) { }
 
+    
+
+    
+
   ngOnInit(): void {
-      
+      console.log(this.data.id)
   }
 
   Renunta() {
@@ -33,7 +37,10 @@ export class EvenimentInscriereComponent implements OnInit{
   }
 
   adaugaInscriere(){
-    this.service.registerToEvent(this.data.id).subscribe((response: any) => {
+    var body ={
+      Id: this.data.id
+    }
+    this.service.registerToEvent(body).subscribe((response: any) => {
       this.dialog.close();
     }, (err: any) => {
       console.log(err);

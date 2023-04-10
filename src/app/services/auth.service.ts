@@ -109,8 +109,8 @@ export class AuthService {
     return this.http.get(this.baseUrl + '/Eveniment/GetParticipants');
   }
 
-  registerToEvent(formData: any) {
-    return this.http.post(this.baseUrl + '/Eveniment/AddRegister', formData);
+  registerToEvent(body:any) {
+    return this.http.post(this.baseUrl + '/Eveniment/AddRegister', body);
   }
 
   getInscriere(eventid: string) {
@@ -123,6 +123,10 @@ export class AuthService {
 
   getEventParticipants(id: string) {
     return this.http.get(this.baseUrl + '/Eveniment/GetEventParticipants/' + id);
+  }
+
+  getParticipants(id: string) {
+    return this.http.get(this.baseUrl + '/Eveniment/GetParticipants/' + id);
   }
 
 

@@ -10,6 +10,9 @@ import { EvenimentAddComponent } from './eveniment/eveniment-add/eveniment-add.c
 import { EvenimentComponent } from './eveniment/eveniment.component';
 import { EvenimentInscriereComponent } from './eveniment/eveniment-inscriere/eveniment-inscriere.component';
 import { EvenimentParticipantiComponent } from './eveniment/eveniment-participanti/eveniment-participanti.component';
+import { AboutUsComponent } from './informations/about-us/about-us.component';
+import { GalleryComponent } from './informations/gallery/gallery.component';
+import { EventsCalendarComponent } from './informations/events-calendar/events-calendar.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -23,7 +26,10 @@ const routes: Routes = [
   {path:'event-add', component:EvenimentAddComponent},
   {path:'event/:id', component: EvenimentComponent},
   {path:'event-register/:id', component: EvenimentInscriereComponent},
-  {path:'event-participants/:id', component: EvenimentParticipantiComponent}
+  {path:'event-participants/:id', component: EvenimentParticipantiComponent},
+  {path:'info/about-us', component: AboutUsComponent},
+  {path:'info/gallery', component: GalleryComponent},
+  {path:'info/events-calendar', component: EventsCalendarComponent}
 ];
 
 @NgModule({

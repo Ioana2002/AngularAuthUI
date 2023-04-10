@@ -1,10 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { StergeParticipareEvenimentComponent } from '../sterge-participare-eveniment/sterge-participare-eveniment.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-eveniment-participanti',
@@ -13,23 +14,25 @@ import { StergeParticipareEvenimentComponent } from '../sterge-participare-eveni
 })
 export class EvenimentParticipantiComponent implements OnInit {
 
-  dataSource = new MatTableDataSource();
+  dataSourceParticipants = new MatTableDataSource();
 
-  showStdA: boolean = false;
+  showParticipanti: boolean = false;
 
-  displayedColumns: string[] = ['participant'];
-  displayedColumnsAdmin: string[] = ['participant', 'actions'];
+  displayedColumns: string[] = ['nume', 'taxa', 'dataInscriere', 'status', 'telefon'];
+  displayedColumnsAdmin: string[] = ['nume', 'taxa', 'dataInscriere', 'status', 'telefon', 'actions'];
+
+  @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+  
   isAdmin: boolean = false;
   id: any;
   eveniment: {
     denumire: string;
     evenimentId: string;
     tipEveniment: string;
-    standard_A: boolean;
+    evenimentParticipanti: boolean;
   } | any = {
       denumire: ''
     };
-  dataSourceOpen: any;
 
   constructor(private service: AuthService,
     private router: Router,
@@ -46,12 +49,13 @@ export class EvenimentParticipantiComponent implements OnInit {
       this.id = params.get("id")
 
       this.service.getEventParticipants(this.id).subscribe((response: any) => {
+        this.dataSourceParticipants.paginator = this.paginator.toArray()[0];
         response.forEach((participant: any) => {
-          this.dataSource.data.push(participant)
-          this.dataSource._updateChangeSubscription();
+          this.dataSourceParticipants.data.push(participant)
+          this.dataSourceParticipants._updateChangeSubscription();
         })
-        this.dataSource.data.sort((a: any, b: any) => a.dataInscriere.localeCompare(b.dataInscriere))
-        this.dataSource._updateChangeSubscription();
+        this.dataSourceParticipants.data.sort((a: any, b: any) => a.dataInscriere.localeCompare(b.dataInscriere))
+        this.dataSourceParticipants._updateChangeSubscription();
       }, (err: any) => {
         console.log(err);
       })
@@ -59,7 +63,7 @@ export class EvenimentParticipantiComponent implements OnInit {
 
     this.service.getEvent(this.id).subscribe((response: any) => {
       this.eveniment = response;
-      this.showStdA = this.eveniment.standard_A == true ? true : false;
+      this.showParticipanti = this.eveniment.evenimentParticipanti == true ? true : false;
     })
 
   }
