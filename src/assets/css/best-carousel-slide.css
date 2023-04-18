@@ -6,17 +6,18 @@ div.jumbotron.carousel-hero {
     padding-top: 100px;
     padding-bottom: 100px;
     margin-bottom: 0;
+
   }
   
-  div.jumbotron.hero-nature {
+  div.jumbotron.hero-trip {
     background-image: url('../../assets/img/excursii.jpg');
   }
   
-  div.jumbotron.hero-photography {
+  div.jumbotron.hero-case {
     background-image: url('../../assets/img/cazuri.jpg');
   }
   
-  div.jumbotron.hero-technology {
+  div.jumbotron.hero-activity {
     background-image: url('../../assets/img/activitati.jpg');
   }
   
@@ -63,11 +64,11 @@ div.jumbotron.carousel-hero {
   }
   
   * {
-    /*box-sizing: inherit;*/
+    /* box-sizing: inherit; */
   }
   
   *:before, *:after {
-    /*box-sizing: inherit;*/
+    /* box-sizing: inherit; */
   }
   
   span {

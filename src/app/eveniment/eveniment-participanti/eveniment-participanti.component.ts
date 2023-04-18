@@ -77,4 +77,8 @@ export class EvenimentParticipantiComponent implements OnInit {
     });
   }
 
+  modifyTax(id: string){
+
+  }
+
 }

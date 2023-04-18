@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
         // Email : "Test"
       }
 
-      console.log(this.loginForm.value)
       //Send the object to database
       this.service.login(this.loginForm.value)
         // .subscribe(

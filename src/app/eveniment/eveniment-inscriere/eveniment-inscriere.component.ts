@@ -29,7 +29,6 @@ export class EvenimentInscriereComponent implements OnInit{
     
 
   ngOnInit(): void {
-      console.log(this.data.id)
   }
 
   Renunta() {

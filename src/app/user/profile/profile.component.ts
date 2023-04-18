@@ -145,7 +145,6 @@ export class ProfileComponent implements OnInit {
             storageRef.getDownloadURL().subscribe((downloadURL: any) => {
               this.profileModel.patchValue({ PozaCI: downloadURL });
               this.StatusCI.value = 'Actualizata';
-              console.log(downloadURL)
             });
           })
         )

@@ -68,7 +68,20 @@ export class EvenimentComponent implements OnInit{
         {
           this.allowValidation = true;
         }
-
+        this.service.getParticipants(this.id).subscribe({
+          next: (participants:any) => {
+            var profile: any = localStorage.getItem("profile");
+            var currentUserProfile = JSON.parse(profile).profileId.toUpperCase();
+            participants.forEach((element:any) => {
+              if(currentUserProfile === element.value.toUpperCase())
+              {
+                this.registered = true;
+              }
+            });
+          },
+          error: (error: any) => console.log(error)
+        }
+        )
       })
     })
     
