@@ -1,6 +1,6 @@
 .responsive-image {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     height: auto;
     border-radius: 10px;
     margin-top: -500px;
@@ -27,7 +27,7 @@
     width: 150px;
     margin: 10px 30px 10px 10px;
     color: white !important;
-    background: var(--bs-danger) !important;
+    background: green !important;
 }
 
 div.row.content {
@@ -52,9 +52,10 @@ div.col.content {
     max-width: 1150px;
     //border-radius: 15px;
     margin: auto;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
+    border-radius: 10px;
+//     border-bottom-left-radius: 15px;
+//     border-bottom-right-radius: 15px;
+ }
 
 .first-section {
     background: #afd49e52;
@@ -109,6 +110,7 @@ div.col.content {
     letter-spacing: 2px;
     font-size: 17px;
     line-height: 2;
+    font-weight: 600;
 }
 
 .bottom-details-text {

@@ -39,7 +39,6 @@ import { FooterComponent } from './componets/page-components/footer/footer.compo
 import { ProfileComponent } from './user/profile/profile.component';
 import { DatePipe } from '@angular/common';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { ExcursiiGeneralComponent } from './componets/excursii/excursii-general/excursii-general.component';
 import { AdministrationGeneralComponent } from './administration/administration-general/administration-general.component';
 import { EvenimentAddComponent } from './eveniment/eveniment-add/eveniment-add.component';
 import { StergereEvenimentComponent } from './eveniment/stergere-eveniment/stergere-eveniment.component';
@@ -60,7 +59,6 @@ import { GalleryComponent } from './informations/gallery/gallery.component';
     NavigationBarComponent,
     FooterComponent,
     ProfileComponent,
-    ExcursiiGeneralComponent,
     AdministrationGeneralComponent,
     EvenimentAddComponent,
     StergereEvenimentComponent,

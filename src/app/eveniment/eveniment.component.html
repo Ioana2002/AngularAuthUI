@@ -1,19 +1,19 @@
-<body>
+<body style="font-family: Open Sans,HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;">
     <navigation-bar></navigation-bar>
     <div class="container-fluid">
         <section class="first-section">
             <div class="container">
-                <div class="row" style="padding-top: 180px; text-align: center;">
+                <div class="row" style="padding-top: 130px; text-align: center;">
                     <div class="col-lg-10 mx-auto">
                         <h1 class="text-uppercase"
-                        style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;">
+                        style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center;letter-spacing: 2px; margin-bottom: 1rem !important;">
                             <strong data-aos="fade" data-aos-duration="2500"
                                 data-aos-offset="300">{{this.eveniment.denumire}}</strong>
                         </h1>
                         <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
                         margin-right: auto;">
                         <span
-                            style="color: rgb(34, 119, 0); font-size: 19px;font-weight: 500;letter-spacing: 3px;"
+                            style="color: rgb(34, 119, 0); font-size: 22px;font-weight: 600;letter-spacing: 3px;"
                             data-aos="fade" data-aos-duration="2500"
                             data-aos-offset="300">{{eveniment.tipEveniment}}</span>
                     </div>
@@ -33,17 +33,23 @@
             <div class="container">
                 <div class="row" style="margin-top: 10px; text-align: center;">
                     <div class="col-lg-6">
-                        <span style="color: rgb(0, 0, 0);font-family:Poppins, sans-serif;letter-spacing: 2px;">Dată început
+                        <span style="color: rgb(0, 0, 0);font-family:Open Sans,HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+                        letter-spacing: 2px;font-weight: 700;">Dată început
                             {{this.eveniment.data_Inceput}} </span>
+                            <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                        margin-right: auto;">
                     </div>
                     <div class="col-lg-6">
-                        <span style="color: rgb(0, 0, 0);font-family:Poppins, sans-serif;letter-spacing: 2px;">Dată sfârșit
+                        <span style="color: rgb(0, 0, 0);font-family:Open Sans,HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+                        letter-spacing: 2px;font-weight: 700;">Dată sfârșit
                             {{this.eveniment.data_Sfarsit}}</span>
+                            <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
+                        margin-right: auto;">
                     </div>
                 </div>
             </div>
         </section>
-        <section style="padding:20px;background:#5db841b4; margin-top: 50px;">
+        <section style="padding:20px; margin-top: 50px;border-radius: 10px;">
             <div class="row" style="text-align: center; justify-content: center;">
                 <button mat-raised-button type="button" *ngIf="this.allowRegister == true && authenticated && !this.registered" class="action-button"
                     (click)="Register()">
@@ -56,28 +62,30 @@
         </section>
         <div class="row tab-content">
             <div class="col content">
-                <div class="column-all-itmes">
+                <div class="column-all-itmes" style="background-color: rgba(97, 139, 43, 0.077);margin-top: 20px;">
                     <div class="row content">
                         <h2 class="text-info fw-light mb-5"
-                            style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 0.5rem !important;"
+                            style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: 600 !important; margin-bottom: 0.5rem !important;"
                             data-aos="fade" data-aos-duration="2500" data-aos-offset="300">
                             Descriere eveniment</h2>
                             <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
                             margin-right: auto;">
                     </div>
-                    <div style="overflow-wrap: break-word;" data-aos="zoom-in" data-aos-duration="1500" [innerHTML]="this.eveniment.descriere">
+                    <div class="container" style="width: 900px; margin-top: 80px;">
+                    <div style="overflow-wrap: break-word;text-align: center; font-size: 20px;" data-aos="zoom-in" data-aos-duration="1500" [innerHTML]="this.eveniment.descriere">
                     </div>
+                </div>
                 </div>
             </div>
         </div>
         <section style="padding: 1rem 0;">
             <div class="container">
                 <div class="row" style="margin-top: 10px; margin-bottom: 100px; text-align: center;">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" style="margin: auto;">
                         <span class="bottom-details"  style="color: black;">LOC DESFĂȘURARE <br> <strong
                                 class="bottom-details-text"  style="color: black;">{{this.eveniment.locatia}}</strong></span>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" style="margin: auto;">
                         <span class="bottom-details"  style="color: black;">DETALII <br> <strong class="bottom-details-text"  style="color: black;">Oră: {{this.eveniment.ora}}</strong><br></span>
                     </div>
                 </div>
