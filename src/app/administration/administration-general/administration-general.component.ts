@@ -26,7 +26,8 @@ export class AdministrationGeneralComponent {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.service.getEvents().subscribe((response: any) => {
+    this.service.getEvents().subscribe({
+      next:(response: any) => {
       this.dataSourceEvents.paginator = this.paginator.toArray()[0];
       this.dataSourceEventsRankings.paginator = this.paginator.toArray()[2];
       response.forEach((event: any) => {
@@ -35,19 +36,20 @@ export class AdministrationGeneralComponent {
         this.dataSourceEventsRankings.data.push(event);
         this.dataSourceEventsRankings._updateChangeSubscription();
       })
-    }, (err) => {
-      console.log(err);
-    })
+    },
+    error: (error: any) => console.log(error)
+  });
 
-    this.service.getAllProfiles().subscribe((response: any) => {
+    this.service.getAllProfiles().subscribe({
+      next:(response: any) => {
       this.dataSourceProfiles.paginator = this.paginator.toArray()[1];
       response.forEach((profile: any) => {
         this.dataSourceProfiles.data.push(profile);
         this.dataSourceProfiles._updateChangeSubscription();
       })
-    }, (err) => {
-      console.log(err);
-    })
+    },
+    error: (error: any) => console.log(error)
+  });
   }
 
   applyFilter(filterValue: string, datasourceName: string) {

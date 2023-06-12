@@ -159,24 +159,16 @@ export class EvenimentAddComponent implements OnInit{
         EvenimentId: this.id
       };
 
-      this.service.uploadEvent(body).subscribe((response: any) => {
+      this.service.uploadEvent(body).subscribe({
+        next: (response: any) => {
         if (response.succeeded) {
-          // this.toastr.success('Evenimentul ' + this.eventModel.get('Denumire')?.value + ' a fost adaugat/modificat cu succes.', 'Succes', {
-          //   timeOut: 4000,
-          //   extendedTimeOut: 0,
-          // });
           this.router.navigate(['administration']);
         }
       },
-        (err: any) => {
-          console.log(err);
-          // this.toastr.error('Eroare la adaugarea evenimentului.', 'Eroare', {
-          //   timeOut: 4000,
-          //   extendedTimeOut: 0,
-          // });
-        })
-    }
+    error: (error: any) => console.log(error)
+    });
   }
+}
 
   GoBack() {
     this.router.navigate(['/administration'])

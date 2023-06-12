@@ -32,12 +32,13 @@ export class StergereEvenimentComponent implements OnInit{
   }
 
   Sterge() {
-    this.service.deleteEvent(this.data.id).subscribe((response: any) => {
+    this.service.deleteEvent(this.data.id).subscribe({
+      next:(response: any) => {
       this.router.navigate(['administration']);
       this.dialog.close();
-    }, (err: any) => {
-      console.log(err);
-    })
+    },
+     error: (error: any) => console.log(error)
+    });
   }
 
 }

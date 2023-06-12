@@ -39,10 +39,11 @@ export class EvenimentInscriereComponent implements OnInit{
     var body ={
       Id: this.data.id
     }
-    this.service.registerToEvent(body).subscribe((response: any) => {
+    this.service.registerToEvent(body).subscribe({
+      next: (response: any) => {
       this.dialog.close();
-    }, (err: any) => {
-      console.log(err);
-    })
-  }
+    },
+    error: (error: any) => console.log(error)
+  });
+}
 }

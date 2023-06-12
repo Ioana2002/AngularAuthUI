@@ -29,12 +29,13 @@ export class StergeParticipareEvenimentComponent implements OnInit{
   }
 
   Sterge() {
-    this.service.deleteParticipation(this.data.id).subscribe(() =>{
+    this.service.deleteParticipation(this.data.id).subscribe({
+      next:() =>{
       location.reload();
       this.dialog.close();
-    }, (err: any) => {
-      console.log(err);
-    })
+    },
+     error: (error: any) => console.log(error)
+    });
   }
 
 }

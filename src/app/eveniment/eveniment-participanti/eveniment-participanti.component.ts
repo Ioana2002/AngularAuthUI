@@ -48,7 +48,8 @@ export class EvenimentParticipantiComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id")
 
-      this.service.getEventParticipants(this.id).subscribe((response: any) => {
+      this.service.getEventParticipants(this.id).subscribe({
+        next:(response: any) => {
         this.dataSourceParticipants.paginator = this.paginator.toArray()[0];
         response.forEach((participant: any) => {
           this.dataSourceParticipants.data.push(participant)
@@ -56,9 +57,9 @@ export class EvenimentParticipantiComponent implements OnInit {
         })
         this.dataSourceParticipants.data.sort((a: any, b: any) => a.dataInscriere.localeCompare(b.dataInscriere))
         this.dataSourceParticipants._updateChangeSubscription();
-      }, (err: any) => {
-        console.log(err);
-      })
+      },
+        error: (error: any) => console.log(error)
+      });
     })
 
     this.service.getEvent(this.id).subscribe((response: any) => {

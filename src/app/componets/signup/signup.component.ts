@@ -58,8 +58,8 @@ export class SignupComponent implements OnInit{
         role: '',
         token: ''
       };
-      this.service.register(body).subscribe(
-        (res: any) => {
+      this.service.register(body).subscribe({
+        next:(res: any) => {
           if (res.succeeded) {
             // this.toastr.success('Contul dumneavoastra a fost creat cu succes', 'Inregistrare realizata cu succes.', {
             //   timeOut: 4000,
@@ -81,16 +81,11 @@ export class SignupComponent implements OnInit{
             });
           }
         },
-        err => {
-          if (err.status == 400) {
-            // this.toastr.error(err.error, 'Inregistrare esuata.',
-            //   {
-            //     timeOut: 4000,
-            //     extendedTimeOut: 0,
-            //   });
-          }
+        error:(err) => {
+          if (err.status == 400)
+            console.log(err);
         }
-      )
+      });
     }
   }
 

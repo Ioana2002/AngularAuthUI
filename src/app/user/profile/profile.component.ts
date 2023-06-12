@@ -231,29 +231,13 @@ export class ProfileComponent implements OnInit {
         if (!userRoles?.includes('User'))
           userRoles = userRoles + ',User';
         localStorage.setItem('roles', userRoles);
-        this.service.getUserProfile().subscribe(
-          (response: any) => {
+        this.service.getUserProfile().subscribe({
+          next:(response: any) => {
             localStorage.setItem('profile', JSON.stringify(response.profile));
-            // this.toastr.success(
-            //   'Profilul a fost actualizat cu succes.',
-            //   'Actualizare reusita',
-            //   {
-            //     timeOut: 4000,
-            //     extendedTimeOut: 0,
-            //   }
-            // );
             this.ngOnInit();
           },
-          (err) => {
-            console.log(err);
-            //   this.toastr.error(err.error, 'Eroare',
-            //   {
-            //     timeOut: 4000,
-            //     extendedTimeOut: 0,
-            //   }
-            // );
-          }
-        )
+          error: (error: any) => console.log(error)
+        });
       })
   };
   // },
@@ -270,14 +254,6 @@ export class ProfileComponent implements OnInit {
 
   changePassword() {
     if (!this.accountModel.valid) {
-      // this.toastr.error(
-      //   'Va rugam sa introduceti corect datele pentru actualizare.',
-      //   'Actualizare esuata',
-      //   {
-      //     timeOut: 4000,
-      //     extendedTimeOut: 0,
-      //   }
-      // );
     }
     else {
       var body = {
@@ -287,29 +263,22 @@ export class ProfileComponent implements OnInit {
         role: '',
         token: ''
       };
-      this.service.changePassword(body).subscribe((response: any) => {
-        // this.toastr.success('Datele contului au fost actualizate cu succes', 'Actualizare reusita',
-        //   {
-        //     timeOut: 4000,
-        //     extendedTimeOut: 0,
-        //   });
+      this.service.changePassword(body).subscribe({
+        next:(response: any) => {
         if (response.email != undefined && response.username != undefined) {
           var account = {
             username: response.username,
             email: response.email
           }
-
           localStorage.setItem('account_info', JSON.stringify(account));
         }
         this.ngOnInit();
-      }, (err) => {
+      }, 
+      error:(err) => {
         if (err.status == 400)
-          // this.toastr.error(
-          //   'Acest username se afla deja in baza de date.',
-          //   'Actualizare esuata.'
-          // );
           console.log(err);
-      })
-    }
+      }
+    });
+  }
   }
 }
