@@ -59,6 +59,7 @@
                     </mat-table>
                 </div>
             </div>
+            <div class="first-table" style="max-width: 750px; margin: auto;">
             <div class="row content">
                 <h2 class="text-info fw-light mb-5"
                 style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;"
@@ -66,7 +67,7 @@
                     PROFILE</h2>
             </div>
             <div class="mat-elevation-z8">
-                <div class="example-header">
+                <div class="example-header"  style="width: 750px;">
                     <mat-form-field style="min-width: 200px;">
                         <input matInput #filter (keyup)="applyFilter($any($event.target).value,'profiles')" placeholder="Filtru">
                         <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
@@ -75,7 +76,7 @@
                         </button>
                     </mat-form-field>
                 </div>
-                <mat-paginator #paginator [pageSizeOptions]="[5,10,25,50,100]" style="width: 1350px;"></mat-paginator>
+                <mat-paginator #paginator [pageSizeOptions]="[5,10,25,50,100]" style="width: 750px;"></mat-paginator>
                 <mat-table [dataSource]="dataSourceProfiles">
                     <ng-container matColumnDef="nume">
                         <mat-header-cell *matHeaderCellDef> NUME </mat-header-cell>
@@ -106,6 +107,7 @@
                     </mat-row>
                 </mat-table>
             </div>
+        </div>
         </div>
     </div>
     <app-footer></app-footer>

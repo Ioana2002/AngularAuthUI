@@ -49,8 +49,7 @@
                 </div>
             </div>
         </section>
-        <!-- && authenticated && !this.registered -->
-        <section style="padding:20px; margin-top: 50px;border-radius: 10px;">
+        <section style="padding:20px; margin-top: 30px;border-radius: 10px;">
             <div class="row" style="text-align: center; justify-content: center;">
                  <button mat-raised-button type="button" *ngIf="this.allowRegister == true && !this.registered" class="action-button"  
                     (click)="Register()">
@@ -75,9 +74,7 @@
                             <hr class="light my-4" style="border-color: rgb(7, 180, 7); max-width: 230px; margin-top: 0.5rem!important; margin-bottom: 1.5rem!important;border-width: 3px;margin-left: auto;
                             margin-right: auto;">
                     </div>
-                    <div class="container" style="width: 900px; margin-top: 80px;">
-                    <div style="overflow-wrap: break-word;text-align: center; font-size: 20px;" data-aos="zoom-in" data-aos-duration="1500" [innerHTML]="this.eveniment.descriere">
-                    </div>
+                    <div style="overflow-wrap: break-word;" data-aos="zoom-in" data-aos-duration="1500" [innerHTML]="this.eveniment.descriere">
                 </div>
                 </div>
             </div>
