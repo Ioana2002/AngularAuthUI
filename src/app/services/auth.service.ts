@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   readonly baseUrl = environment.apiUrl;
   //private baseUrl:string = "http://localhost:19248"
-  constructor(private fb: FormBuilder, private http : HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
@@ -41,7 +41,7 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/ApplicationUser/Register`, userObj);
   }
 
-  login(loginObj:any){
+  login(loginObj: any) {
     return this.http.post(`${this.baseUrl}/ApplicationUser/Login`, loginObj);
   }
 
@@ -63,7 +63,7 @@ export class AuthService {
       formData
     );
   }
-  UpdateProfileField(formData:any){
+  UpdateProfileField(formData: any) {
     return this.http.post<any>(
       `${this.baseUrl}/Profile/UpdateProfileField`,
       formData
@@ -94,7 +94,7 @@ export class AuthService {
     return this.http.get(this.baseUrl + '/Eveniment/GetEvent/' + id);
   }
 
-  deleteEvent(id:string){
+  deleteEvent(id: string) {
     return this.http.delete(this.baseUrl + '/Eveniment/DeleteEvent/' + id);
   }
 
@@ -109,7 +109,7 @@ export class AuthService {
     return this.http.get(this.baseUrl + '/Eveniment/GetParticipants');
   }
 
-  registerToEvent(body:any) {
+  registerToEvent(body: any) {
     return this.http.post(this.baseUrl + '/Eveniment/AddRegister', body);
   }
 
@@ -117,7 +117,7 @@ export class AuthService {
     return this.http.get(this.baseUrl + '/Eveniment/GetInscriere/' + eventid);
   }
 
-  deleteParticipation(id:string){
+  deleteParticipation(id: string) {
     return this.http.get(this.baseUrl + '/Eveniment/DeleteParticipation/' + id);
   }
 
@@ -127,6 +127,10 @@ export class AuthService {
 
   getParticipants(id: string) {
     return this.http.get(this.baseUrl + '/Eveniment/GetParticipants/' + id);
+  }
+
+  payTax(id: string) {
+    return this.http.get(this.baseUrl + '/Eveniment/PayTax/' + id)
   }
 
 

@@ -4,6 +4,11 @@
     height: 700px;
 }
 
+.mat-mdc-table mat-row.mat-mdc-row:hover {
+    cursor: pointer;
+    background-color: #aaa4a4cf;
+}
+
 .container-fluid{
     width: 100%;
     padding-right: var(--bs-gutter-x, 0.75rem);

@@ -5,7 +5,7 @@ import { DatePipe } from '@angular/common';
 import { EvenimentInscriereComponent } from './eveniment-inscriere/eveniment-inscriere.component';
 import { MatDialog } from '@angular/material/dialog';
 
-declare function download(url:any): any;
+declare function download(url: any): any;
 
 
 @Component({
@@ -13,10 +13,10 @@ declare function download(url:any): any;
   templateUrl: './eveniment.component.html',
   styleUrls: ['./eveniment.component.scss']
 })
-export class EvenimentComponent implements OnInit{
+export class EvenimentComponent implements OnInit {
 
-  id:any = '';
-  eveniment : {
+  id: any = '';
+  eveniment: {
     data_Inceput: string;
     data_Sfarsit: string;
     denumire: string;
@@ -29,11 +29,11 @@ export class EvenimentComponent implements OnInit{
     poster: string;
     tipEveniment: string;
   } | any = {
-    denumire : ''
-  };
+      denumire: ''
+    };
 
-  allowRegister:boolean = false;
-  allowValidation:boolean = false;
+  allowRegister: boolean = false;
+  allowValidation: boolean = false;
   authenticated: boolean = false;
   registered: boolean = false;
 
@@ -45,36 +45,32 @@ export class EvenimentComponent implements OnInit{
 
 
   ngOnInit(): void {
-    if (localStorage.getItem("token") != null) {
-      this.authenticated = true;
-    }
-    // if (localStorage.getItem("ParticipareId") != null && localStorage.getItem("token") != null) {
-    //   this.registered = true;
-    // }
+    this.allowRegister = false;
+
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id")
-      this.service.getEvent(this.id).subscribe((response:any) =>{
+      this.service.getEvent(this.id).subscribe((response: any) => {
         this.eveniment = response;
 
-        this.eveniment.data_Inceput = this.datePipe.transform(this.eveniment.data_Inceput , 'dd.MM.yyyy');
-        this.eveniment.data_Sfarsit = this.datePipe.transform(this.eveniment.data_Sfarsit , 'dd.MM.yyyy');
+        this.eveniment.data_Inceput = this.datePipe.transform(this.eveniment.data_Inceput, 'dd.MM.yyyy');
+        this.eveniment.data_Sfarsit = this.datePipe.transform(this.eveniment.data_Sfarsit, 'dd.MM.yyyy');
 
-        if((localStorage.getItem("profile") != null || localStorage.getItem("profile") != undefined) && 
-           (localStorage.getItem("token") != null || localStorage.getItem("token") != undefined))
-        {
+        if ((localStorage.getItem("profile") != null || localStorage.getItem("profile") != undefined) &&
+          (localStorage.getItem("token") != null || localStorage.getItem("token") != undefined)) {
+          this.registered = false;
           this.allowRegister = true;
         }
-        if(localStorage.getItem('roles')?.includes('Admin'))
-        {
+        if (localStorage.getItem('roles')?.includes('Admin')) {
           this.allowValidation = true;
         }
         this.service.getParticipants(this.id).subscribe({
-          next: (participants:any) => {
+          next: (participants: any) => {
             var profile: any = localStorage.getItem("profile");
+            if(!profile)
+              return;
             var currentUserProfile = JSON.parse(profile).profileId.toUpperCase();
-            participants.forEach((element:any) => {
-              if(currentUserProfile === element.value.toUpperCase())
-              {
+            participants.forEach((element: any) => {
+              if (currentUserProfile === element.value.toUpperCase()) {
                 this.registered = true;
               }
             });
@@ -84,12 +80,11 @@ export class EvenimentComponent implements OnInit{
         )
       })
     })
-    
+
 
   }
 
-  Register()
-  {
+  Register() {
     const dialogRef = this.dialog.open(EvenimentInscriereComponent, {
       width: "600px",
       height: "225px",
@@ -98,14 +93,19 @@ export class EvenimentComponent implements OnInit{
     });
   }
 
-  GoToParticipants()
-  {
+  GoToParticipants() {
     this.router.navigate(['event-participants', this.id])
   }
 
-  downloadLink(URL:any)
-  {
-    download(URL)
-  }
+  // downloadParticipantiExcel() {
+  //   this.service.getParticipantsEventExcel(this.eveniment.evenimentId).subscribe((response: any) => {
+  //     var date = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
+  //     var currentDate = JSON.stringify(date)
+  //     const blob = new Blob([response.body], { type: response.headers.get('content-type') });
+  //     var fileName = "Participanti_" + this.eveniment.denumire + '_' + currentDate + '.xlsx';
+  //     const file = new File([blob], fileName, { type: response.headers.get('content-type') });
+  //     saveAs(file);
+  //   })
+  // }
 
 }

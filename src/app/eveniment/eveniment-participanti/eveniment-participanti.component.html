@@ -21,7 +21,7 @@
             </div>
         </section>
         <div class="column-all-itmes" [ngStyle]="{ 'max-width': this.isAdmin ? '1070px' : '970px'}">
-            <div class="first-table" style="max-width: 780px; margin: auto;">
+            <div class="first-table" style="max-width: 950px; margin: auto;">
                 <div class="row content">
                     <h2 class="text-info fw-light mb-5"
                     style="border-color: var(--bs-gray-800);color:var(--bs-gray-800) !important; text-align:center; font-weight: bold !important; margin-bottom: 1rem !important;"
@@ -29,7 +29,7 @@
                         PARTICIPANTI</h2>
                 </div>
                 <div class="mat-elevation-z8">
-                    <mat-paginator #paginatorEvents [pageSizeOptions]="[5,10,25,50,100]" style="width: 780px;"></mat-paginator>
+                    <mat-paginator #paginatorEvents [pageSizeOptions]="[5,10,25,50,100]" style="width: 950px;"></mat-paginator>
                     <mat-table [dataSource]="dataSourceParticipants">
                         <ng-container matColumnDef="nume">
                             <mat-header-cell *matHeaderCellDef> NUME </mat-header-cell>

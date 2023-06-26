@@ -22,7 +22,7 @@ export class EvenimentParticipantiComponent implements OnInit {
   displayedColumnsAdmin: string[] = ['nume', 'taxa', 'dataInscriere', 'status', 'telefon', 'actions'];
 
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
-  
+
   isAdmin: boolean = false;
   id: any;
   eveniment: {
@@ -49,15 +49,16 @@ export class EvenimentParticipantiComponent implements OnInit {
       this.id = params.get("id")
 
       this.service.getEventParticipants(this.id).subscribe({
-        next:(response: any) => {
-        this.dataSourceParticipants.paginator = this.paginator.toArray()[0];
-        response.forEach((participant: any) => {
-          this.dataSourceParticipants.data.push(participant)
+        next: (response: any) => {
+          this.dataSourceParticipants.paginator = this.paginator.toArray()[0];
+          response.forEach((participant: any) => {
+            participant.dataInscriere = this.datePipe.transform(participant.dataInscriere, 'dd.MM.yyyy')
+            this.dataSourceParticipants.data.push(participant)
+            this.dataSourceParticipants._updateChangeSubscription();
+          })
+          this.dataSourceParticipants.data.sort((a: any, b: any) => a.dataInscriere.localeCompare(b.dataInscriere))
           this.dataSourceParticipants._updateChangeSubscription();
-        })
-        this.dataSourceParticipants.data.sort((a: any, b: any) => a.dataInscriere.localeCompare(b.dataInscriere))
-        this.dataSourceParticipants._updateChangeSubscription();
-      },
+        },
         error: (error: any) => console.log(error)
       });
     })
@@ -78,8 +79,17 @@ export class EvenimentParticipantiComponent implements OnInit {
     });
   }
 
-  modifyTax(id: string){
-
+  modifyTax(id: string) {
+    this.service.payTax(id).subscribe({
+      next: (response: any) => {
+        this.ngOnInit();
+        window.location.reload();
+      },
+      error: (error: any) => {
+        window.location.reload();
+      }
+    }
+    )
   }
 
 }

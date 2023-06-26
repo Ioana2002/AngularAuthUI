@@ -11,6 +11,10 @@
     margin-bottom: 130px;
 }
 
+.mat-mdc-table .mat-mdc-header-cell{
+    font-weight: bold;
+}
+
 @media (max-width: 750px) {
     .column-all-itmes {
         max-width: 1000px;
