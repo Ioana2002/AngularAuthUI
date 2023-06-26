@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { EvenimentInscriereComponent } from './eveniment-inscriere/eveniment-inscriere.component';
 import { MatDialog } from '@angular/material/dialog';
+import { saveAs } from 'file-saver';
 
 declare function download(url: any): any;
 
@@ -78,6 +79,10 @@ export class EvenimentComponent implements OnInit {
           error: (error: any) => console.log(error)
         }
         )
+        if(localStorage.getItem('roles')?.includes('Admin'))
+     {
+       this.allowValidation = true;
+     }
       })
     })
 
@@ -97,15 +102,15 @@ export class EvenimentComponent implements OnInit {
     this.router.navigate(['event-participants', this.id])
   }
 
-  // downloadParticipantiExcel() {
-  //   this.service.getParticipantsEventExcel(this.eveniment.evenimentId).subscribe((response: any) => {
-  //     var date = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
-  //     var currentDate = JSON.stringify(date)
-  //     const blob = new Blob([response.body], { type: response.headers.get('content-type') });
-  //     var fileName = "Participanti_" + this.eveniment.denumire + '_' + currentDate + '.xlsx';
-  //     const file = new File([blob], fileName, { type: response.headers.get('content-type') });
-  //     saveAs(file);
-  //   })
-  // }
+  downloadParticipantiExcel() {
+    this.service.getParticipantsEventExcel(this.eveniment.evenimentId).subscribe((response: any) => {
+      var date = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
+      var currentDate = JSON.stringify(date)
+      const blob = new Blob([response.body], { type: response.headers.get('content-type') });
+      var fileName = "Participanti_" + this.eveniment.denumire + '_' + currentDate + '.xlsx';
+      const file = new File([blob], fileName, { type: response.headers.get('content-type') });
+      saveAs(file);
+    })
+  }
 
 }

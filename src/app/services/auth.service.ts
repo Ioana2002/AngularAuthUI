@@ -133,6 +133,18 @@ export class AuthService {
     return this.http.get(this.baseUrl + '/Eveniment/PayTax/' + id)
   }
 
+  getParticipantsEventExcel(data: any) {
+    return this.http.get(this.baseUrl + '/Eveniment/GetParticipantsList/' + data,
+      {
+        headers: {
+          'Content-Type': 'application/json ',
+          Authorization: "BEARER " + localStorage.getItem("token")
+        },
+        observe: 'response',
+        responseType: 'arraybuffer'
+      });
+  }
+
 
 
   /*roleMatch(allowedRoles): boolean {
