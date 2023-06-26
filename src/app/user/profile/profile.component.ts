@@ -239,6 +239,7 @@ export class ProfileComponent implements OnInit {
           error: (error: any) => console.log(error)
         });
       })
+      alert("Profil salvat cu succes!");
   };
   // },
   // (err) => {

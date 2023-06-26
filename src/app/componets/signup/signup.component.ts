@@ -80,6 +80,7 @@ export class SignupComponent implements OnInit{
               }
             });
           }
+          alert("Cont creat cu succes!");
         },
         error:(err) => {
           if (err.status == 400)

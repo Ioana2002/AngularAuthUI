@@ -164,6 +164,7 @@ export class EvenimentAddComponent implements OnInit{
         if (response.succeeded) {
           this.router.navigate(['administration']);
         }
+        alert("Eveniment creat cu succes!");
       },
     error: (error: any) => console.log(error)
     });

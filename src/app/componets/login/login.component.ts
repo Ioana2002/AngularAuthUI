@@ -84,6 +84,7 @@ export class LoginComponent implements OnInit {
                     );
                   }
                 );
+                alert("Autentificare realizata cu succes!");
               },
               error: (error: any) => console.log(error)
             }
